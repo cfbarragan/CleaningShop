@@ -1,0 +1,42 @@
+{
+  "name": "cleaningshop",
+  "version": "1.0.0",
+  "description": "Pagina para precios de negocio de limpieza",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cfbarragan/CleaningShop.git"
+  },
+  "author": "cfbarragan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cfbarragan/CleaningShop/issues"
+  },
+  "homepage": "https://github.com/cfbarragan/CleaningShop#readme",
+  "dependencies": {
+    "express": "^4.14.0",
+    "body-parser": "^1.15.2",
+    "cookie-parser": "^1.4.3",
+    "ejs": "^2.5.2",
+    "express-handlebars": "^3.0.0",
+    "express-session": "^1.14.1",
+    "http": "0.0.0",
+    "jscs": "^3.0.7",
+    "mongodb": "^2.2.10",
+    "passport": "^0.3.2",
+    "passport-local": "^1.0.0",
+    "xml2js": "^0.4.17"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-inject": "^4.1.0",
+    "gulp-jscs": "^4.0.0",
+    "gulp-jshint": "^2.0.1",
+    "gulp-nodemon": "^2.1.0",
+    "jshint-stylish": "^2.2.1",
+    "wiredep": "^4.0.0"
+  }
+}

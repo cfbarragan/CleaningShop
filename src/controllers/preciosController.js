@@ -9,11 +9,6 @@ var preciosController = function(bookService, nav) {
         next();
     };
     var getIndex = function(req,res) {
-            // res.render('precios', {
-            //             title : 'Precios' ,
-            //             nav: nav,
-            //             books : null
-            //         });
             var url = 'mongodb://localhost:27017/CleanShop';
             mongodb.connect(url, function(err,db) {
                 var collection = db.collection('products');

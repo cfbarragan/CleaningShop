@@ -9,22 +9,22 @@ var ofertasController = function(bookService, nav) {
         next();
     };
     var getIndex = function(req,res) {
-            res.render('index', {
+            // res.render('index', {
+            //             title : 'Ofertas' ,
+            //             nav: nav,
+            //             books : null
+            //         });
+            var url = 'mongodb://localhost:27017/CleanShop';
+            mongodb.connect(url, function(err,db) {
+                var collection = db.collection('offers');
+                collection.find({}).toArray(function(err, results) {
+                    res.render('index', {
                         title : 'Ofertas' ,
                         nav: nav,
-                        books : null
+                        offers : results
                     });
-            // var url = 'mongodb://localhost:27017/libraryApp';
-            // mongodb.connect(url, function(err,db) {
-            //     var collection = db.collection('books');
-            //     collection.find({}).toArray(function(err, results) {
-            //         res.render('bookListView', {
-            //             title : 'Books' ,
-            //             nav: nav,
-            //             books : results
-            //         });
-            //     });
-            // });
+                });
+            });
         };
 
     // var getById = function(req,res) {

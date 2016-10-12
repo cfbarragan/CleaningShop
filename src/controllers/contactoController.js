@@ -9,8 +9,8 @@ var contactoController = function(contactoService, nav) {
         next();
     };
     var getIndex = function(req,res) {
-            res.render('precios', {
-                        title : 'Precios' ,
+            res.render('Contacto', {
+                        title : 'Contacto' ,
                         nav: nav,
                         books : null
                     });

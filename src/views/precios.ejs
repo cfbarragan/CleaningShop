@@ -84,17 +84,19 @@
                                 <h3>Más <span>Vendidos</span></h3>
                             </div>
                             <ul>
+                                <% for(var i=0; i<products.length; i++){%>
                                 <li class="wow fadeInUp" data-wow-duration="300ms" data-wow-delay="300ms">
                                     <div class="item">
                                         <div class="item-title">
-                                            <h2>Pancakes n' Such</h2>
+                                            <h2><%=products[i].productName%></h2>
                                             <div class="border-bottom"></div>
-                                            <span>$ 25.00</span>
+                                            <span>$ <%=products[i].productPrice%></span>
                                         </div>
                                        
                                     </div>
                                 </li>
-                                <li class="wow fadeInUp" data-wow-duration="300ms" data-wow-delay="400ms">
+                                 <%}%>
+                             <!--   <li class="wow fadeInUp" data-wow-duration="300ms" data-wow-delay="400ms">
                                     <div class="item">
                                         <div class="item-title">
                                             <h2>Homestyle Chicken Pot Pie</h2>
@@ -143,7 +145,7 @@
                                         </div>
                                       
                                     </div>
-                                </li>
+                                </li>-->
                             </ul>
                             <!--<a class="btn btn-default pull-right wow bounceIn" data-wow-duration="500ms" data-wow-delay="1200ms" href="#" role="button">More Info</a>-->
                         </div>

@@ -1,16 +1,16 @@
 var mongodb = require('mongodb').MongoClient;
 var ObjectId = require('mongodb').ObjectID;
 
-var contactoController = function(contactoService, nav) {
+var adminController = function(contactoService, nav) {
     var middleware = function(req,res,next) {
         // if (!req.user) {
         //     res.redirect('/');
         // }
         next();
     };
-    var getIndex = function(req,res) {
-            res.render('precios', {
-                        title : 'Precios' ,
+    var getAddProduct = function(req,res) {
+            res.render('product', {
+                        title : 'Agregar Producto' ,
                         nav: nav,
                         books : null
                     });
@@ -47,10 +47,10 @@ var contactoController = function(contactoService, nav) {
     //     };
 
     return {
-        getIndex: getIndex,
+        getAddProduct: getAddProduct,
         // getById: getById,
         // middleware : middleware
     };
 };
 
-module.exports = contactoController;
+module.exports = adminController;

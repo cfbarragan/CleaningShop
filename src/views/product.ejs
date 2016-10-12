@@ -1,0 +1,47 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title>Productos de limpieza</title>
+		<meta name="description" content="">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- bower:css -->
+        <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css" />
+        <!-- endbower -->
+        <!-- bower:js -->
+        <script src="/lib/jquery/dist/jquery.js"></script>
+        <script src="/lib/bootstrap/dist/js/bootstrap.js"></script>
+        <script src="/lib/jquery.sticky/jquery.sticky.js"></script>
+        <!-- endbower -->   
+        <!--[if lt IE 9]>
+			<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+    </head>
+    <body>
+        <div class="container">
+            <h2>Agregar Producto</h2>
+                <form action="" method="post" id="crudForm"  class="form-horizontal" accept-charset="utf-8">
+                    <div class="form-group customerName_form_group">
+                        <label class="col-sm-3 control-label">Producto</label>
+                        <div class="col-sm-9">
+                            <input id="field-customerName" class="form-control" name="productName" placeholder="Ingrese nombre de producto" required type="text" value="" maxlength="50">
+                        </div>
+                    </div>
+                    <div class="form-group contactLastName_form_group"> 
+                        <label class="col-sm-3 control-label">Precio</label>
+                        <div class="col-sm-9">
+                            <input id="field-contactLastName" class="form-control" name="producPrice" placeholder="Ingrese precio" type="number" value="" maxlength="50">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-3 col-sm-7">
+                            <button class="btn btn-default btn-success b10" type="submit" id="form-button-save"><i class="fa fa-check"></i> Guardar</button>
+                            <a class="btn btn-info b10" href="/precios" type="button" id="save-and-go-back-button"><i class="fa fa-rotate-left"></i> Guardar y Volver </a>
+                            <a class="btn btn-default cancel-button b10" href="/precios" type="button" id="cancel-button"><i class="fa fa-warning"></i>Cancelar </a>
+                        </div>
+                    </div>
+                </form>
+        </div>
+    <body>
+</html>

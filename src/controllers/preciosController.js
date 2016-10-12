@@ -9,22 +9,22 @@ var preciosController = function(bookService, nav) {
         next();
     };
     var getIndex = function(req,res) {
-            res.render('precios', {
-                        title : 'Precios' ,
-                        nav: nav,
-                        books : null
-                    });
-            // var url = 'mongodb://localhost:27017/libraryApp';
-            // mongodb.connect(url, function(err,db) {
-            //     var collection = db.collection('books');
-            //     collection.find({}).toArray(function(err, results) {
-            //         res.render('bookListView', {
-            //             title : 'Books' ,
+            // res.render('precios', {
+            //             title : 'Precios' ,
             //             nav: nav,
-            //             books : results
+            //             books : null
             //         });
-            //     });
-            // });
+            var url = 'mongodb://localhost:27017/CleanShop';
+            mongodb.connect(url, function(err,db) {
+                var collection = db.collection('products');
+                collection.find({}).toArray(function(err, results) {
+                    res.render('precios', {
+                        title : 'precios' ,
+                        nav: nav,
+                        products : results
+                    });
+                });
+            });
         };
 
     // var getById = function(req,res) {

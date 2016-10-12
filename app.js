@@ -24,10 +24,12 @@ app.set('view engine', 'ejs');
 var ofertasRouter = require('./src/routes/ofertasRoutes')(nav);
 var preciosRouter = require('./src/routes/preciosRoutes')(nav);
 var contactoRouter = require('./src/routes/contactoRoutes')(nav);
+var adminRouter = require('./src/routes/adminRoutes')(nav);
 
 app.use('/Ofertas', ofertasRouter);
 app.use('/Precios', preciosRouter);
 app.use('/Contacto', contactoRouter);
+app.use('/Admin', adminRouter);
 
 app.get('/', function(req,res) {
     res.render('precios', {

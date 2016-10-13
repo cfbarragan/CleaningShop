@@ -21,23 +21,49 @@
     <body>
         <div class="container">
             <h2>Agregar Producto</h2>
-                <form action="" method="post" id="crudForm"  class="form-horizontal" accept-charset="utf-8">
-                    <div class="form-group customerName_form_group">
+                <form action="/Admin/addProduct" method="post" class="form-horizontal" accept-charset="utf-8">
+                    <div class="form-group ">
                         <label class="col-sm-3 control-label">Producto</label>
                         <div class="col-sm-9">
-                            <input id="field-customerName" class="form-control" name="productName" placeholder="Ingrese nombre de producto" required type="text" value="" maxlength="50">
+                            <input id="productName" class="form-control" name="productName" placeholder="Ingrese nombre de producto" required type="text" value="" maxlength="50">
                         </div>
                     </div>
-                    <div class="form-group contactLastName_form_group"> 
+                    <div class="form-group "> 
                         <label class="col-sm-3 control-label">Precio</label>
                         <div class="col-sm-9">
-                            <input id="field-contactLastName" class="form-control" name="producPrice" placeholder="Ingrese precio" type="number" value="" maxlength="50">
+                            <input id="productPrice" class="form-control" name="productPrice" placeholder="Ingrese precio" type="number" value="" maxlength="50">
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="col-sm-offset-3 col-sm-7">
                             <button class="btn btn-default btn-success b10" type="submit" id="form-button-save"><i class="fa fa-check"></i> Guardar</button>
-                            <a class="btn btn-info b10" href="/precios" type="button" id="save-and-go-back-button"><i class="fa fa-rotate-left"></i> Guardar y Volver </a>
+                            <a class="btn btn-default cancel-button b10" href="/precios" type="button" id="cancel-button"><i class="fa fa-warning"></i>Cancelar </a>
+                        </div>
+                    </div>
+                </form>
+                <h2>Agregar Promociones</h2>
+                <form action="/Admin/addOffer" method="post" class="form-horizontal" accept-charset="utf-8">
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Promoción</label>
+                        <div class="col-sm-9">
+                            <input id="offerName" class="form-control" name="offerName" placeholder="Ingrese nombre para la promoción" required type="text" value="" maxlength="50">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Descripción</label>
+                        <div class="col-sm-9">
+                            <input id="offerDesc" class="form-control" name="offerDesc" placeholder="Ingrese nombre para la promoción" required type="text" value="" maxlength="150">
+                        </div>
+                    </div>
+                    <div class="form-group "> 
+                        <label class="col-sm-3 control-label">Precio</label>
+                        <div class="col-sm-9">
+                            <input id="offerPrice" class="form-control" name="offerPrice" placeholder="Ingrese precio" type="number" value="" maxlength="50">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-3 col-sm-7">
+                            <button class="btn btn-default btn-success b10" type="submit" id="form-button-save"><i class="fa fa-check"></i> Guardar</button>
                             <a class="btn btn-default cancel-button b10" href="/precios" type="button" id="cancel-button"><i class="fa fa-warning"></i>Cancelar </a>
                         </div>
                     </div>

@@ -96,14 +96,16 @@ var offers = [
 var router = function(nav) {
    //var bookService = require('../services/goodreadsService')();
     var adminController = require('../controllers/adminController')(null, nav);
-
+    var productController = require('../controllers/productController')();
+    var offerController = require('../controllers/offerController')();
     //ofertasRouter.use(bookController.middleware);
     adminRouter.route('/addProduct')
-        .get(adminController.getAddProduct);
-
+        .get(adminController.getAddProduct)
+        .post(productController.addProduct);
     // ofertasRouter.route('/:id')
     //    .get(bookController.getById);
-
+    adminRouter.route('/addOffer')
+        .post(offerController.addOffer);
     adminRouter.route('/addProductData')
         .get(function(req,res) {
             var url = 'mongodb://localhost:27017/CleanShop';

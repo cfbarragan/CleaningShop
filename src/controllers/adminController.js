@@ -12,7 +12,7 @@ var adminController = function(contactoService, navPanel) {
             res.render('product', {
                 title : 'Agregar Producto',
                 nav: navPanel,
-                books : null
+                products : null
             });
         };
 

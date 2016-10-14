@@ -15,6 +15,13 @@ var  nav = [{
     },{
         Link: '/Contacto', Text: 'Contacto'}];
 
+var  navPanel = [{
+        Link: '/admin/adminPrecios', Text: 'Precios'
+    }, {
+        Link: '/admin/adminOfertas', Text: 'Ofertas'
+    },{
+        Link: '/admin/adminConfig', Text: 'Configuraciones'}];
+
 app.use(express.static('public'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
@@ -25,7 +32,7 @@ app.set('view engine', 'ejs');
 var ofertasRouter = require('./src/routes/ofertasRoutes')(nav);
 var preciosRouter = require('./src/routes/preciosRoutes')(nav);
 var contactoRouter = require('./src/routes/contactoRoutes')(nav);
-var adminRouter = require('./src/routes/adminRoutes')(nav);
+var adminRouter = require('./src/routes/adminRoutes')(navPanel);
 
 app.use('/Ofertas', ofertasRouter);
 app.use('/Precios', preciosRouter);

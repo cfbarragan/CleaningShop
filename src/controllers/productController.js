@@ -14,7 +14,7 @@ var productController = function() {
                     productPrice : req.body.productPrice
                 };
                 collection.insert(product, function(err, results) {
-                            res.redirect('/admin/addProduct');
+                            res.redirect('/admin/adminPrecios');
                         });
             });
     };

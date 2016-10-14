@@ -1,7 +1,7 @@
 var mongodb = require('mongodb').MongoClient;
 var ObjectId = require('mongodb').ObjectID;
 
-var preciosController = function(bookService, nav) {
+var preciosController = function(preciosService, nav) {
     var middleware = function(req,res,next) {
         // if (!req.user) {
         //     res.redirect('/');

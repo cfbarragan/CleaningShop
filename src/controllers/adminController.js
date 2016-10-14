@@ -1,7 +1,7 @@
 var mongodb = require('mongodb').MongoClient;
 var ObjectId = require('mongodb').ObjectID;
 
-var adminController = function(contactoService, nav) {
+var adminController = function(contactoService, navPanel) {
     var middleware = function(req,res,next) {
         // if (!req.user) {
         //     res.redirect('/');
@@ -10,46 +10,43 @@ var adminController = function(contactoService, nav) {
     };
     var getAddProduct = function(req,res) {
             res.render('product', {
-                        title : 'Agregar Producto' ,
-                        nav: nav,
-                        books : null
+                title : 'Agregar Producto',
+                nav: navPanel,
+                books : null
+            });
+        };
+
+    var getPanel = function(req, res) {
+            res.render('panel', {
+                title:'Panel Administrador',
+                nav: navPanel,
+            });
+        };
+
+    var getAdminPrecios = function(req,res) {
+            var url = 'mongodb://localhost:27017/CleanShop';
+            mongodb.connect(url, function(err,db) {
+                var collection = db.collection('products');
+                collection.find({}).toArray(function(err, results) {
+                    res.render('adminPrecios', {
+                        title : 'Administrar Precios' ,
+                        nav: navPanel,
+                        precios : results
                     });
-            // var url = 'mongodb://localhost:27017/libraryApp';
-            // mongodb.connect(url, function(err,db) {
-            //     var collection = db.collection('books');
-            //     collection.find({}).toArray(function(err, results) {
-            //         res.render('bookListView', {
-            //             title : 'Books' ,
-            //             nav: nav,
-            //             books : results
-            //         });
-            //     });
+                });
+            });
+
+            // res.render('adminPrecios', {
+            //     title:'Administrar Precios',
+            //     nav: navPanel,
+            //     precios: null
             // });
         };
 
-    // var getById = function(req,res) {
-    //         var id = new ObjectId(req.params.id);
-    //         var url = 'mongodb://localhost:27017/libraryApp';
-    //         mongodb.connect(url, function(err,db) {
-    //             var collection = db.collection('books');
-    //             collection.findOne({_id:id},
-    //                 function(err, results) {
-    //                     bookService.getBookById(results.bookId, function(err, book) {
-    //                         results.book = book;
-    //                         res.render('bookView', {
-    //                             title : 'Books' ,
-    //                             nav: nav,
-    //                             book : results
-    //                         });
-    //                     });
-    //                 });
-    //         });
-    //     };
-
     return {
         getAddProduct: getAddProduct,
-        // getById: getById,
-        // middleware : middleware
+        getPanel: getPanel,
+        getAdminPrecios : getAdminPrecios
     };
 };
 

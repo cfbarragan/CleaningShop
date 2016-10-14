@@ -99,6 +99,12 @@ var router = function(nav) {
     var productController = require('../controllers/productController')();
     var offerController = require('../controllers/offerController')();
     //ofertasRouter.use(bookController.middleware);
+
+    adminRouter.route('/')
+     .get(adminController.getPanel);
+    adminRouter.route('/panel')
+        .get(adminController.getPanel);
+
     adminRouter.route('/addProduct')
         .get(adminController.getAddProduct)
         .post(productController.addProduct);
@@ -129,6 +135,9 @@ var router = function(nav) {
                 });
             });
         });
+
+    adminRouter.route('/adminPrecios')
+        .get(adminController.getAdminPrecios);
 
     return adminRouter;
 };

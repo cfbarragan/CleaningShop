@@ -20,24 +20,24 @@
     </head>
     <body>
         <div class="container">
-                <h2>Agregar Producto</h2>
+                <h2><%=title%></h2>
                 <form action="/Admin/addProduct" method="post" class="form-horizontal" accept-charset="utf-8">
                     <div class="form-group ">
                         <label class="col-sm-3 control-label">Producto</label>
                         <div class="col-sm-9">
-                            <input id="productName" class="form-control" name="productName" placeholder="Ingrese nombre de producto" required type="text" value="" maxlength="50">
+                            <input id="productName" class="form-control" name="productName" placeholder="Ingrese nombre de producto" required type="text" value="<%=product.productName%>" maxlength="50">
                         </div>
                     </div>
                     <div class="form-group "> 
                         <label class="col-sm-3 control-label">Precio</label>
                         <div class="col-sm-9">
-                            <input id="productPrice" class="form-control" name="productPrice" placeholder="Ingrese precio" type="number" value="" maxlength="50">
+                            <input id="productPrice" class="form-control" name="productPrice" placeholder="Ingrese precio" type="number" value="<%=product.productPrice%>" maxlength="50">
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="col-sm-offset-3 col-sm-7">
-                            <button class="btn btn-default btn-success b10" type="submit" id="form-button-save"><i class="fa fa-check"></i> Guardar</button>
-                            <a class="btn btn-default cancel-button b10" href="/precios" type="button" id="cancel-button"><i class="fa fa-warning"></i>Cancelar </a>
+                            <button class="btn btn-default btn-success b10" type="submit" id="form-button-save"><i class="fa fa-check"></i> Actualizar</button>
+                            <a class="btn btn-default cancel-button b10" href="/panel" type="button" id="cancel-button"><i class="fa fa-warning"></i>Cancelar </a>
                         </div>
                     </div>
                 </form>

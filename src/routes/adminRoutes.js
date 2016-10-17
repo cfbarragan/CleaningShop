@@ -108,8 +108,8 @@ var router = function(nav) {
     adminRouter.route('/addProduct')
         .get(adminController.getAddProduct)
         .post(productController.addProduct);
-    // ofertasRouter.route('/:id')
-    //    .get(bookController.getById);
+    adminRouter.route('/product/edit/:id')
+       .get(productController.getById);
     adminRouter.route('/addOffer')
         .post(offerController.addOffer);
     adminRouter.route('/addProductData')

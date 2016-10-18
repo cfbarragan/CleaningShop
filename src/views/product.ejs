@@ -1,73 +1,97 @@
-<html>
-    <head>
-        <meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<title>Productos de limpieza</title>
-		<meta name="description" content="">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-        <!-- bower:css -->
-        <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.min.css" />
-        <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css" />
-        <!-- endbower -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, shrink-to-fit=no, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title><%=title%></title>
+
         <!-- bower:js -->
         <script src="/lib/jquery/dist/jquery.js"></script>
         <script src="/lib/bootstrap/dist/js/bootstrap.js"></script>
         <script src="/lib/jquery.sticky/jquery.sticky.js"></script>
         <!-- endbower -->   
-        <!--[if lt IE 9]>
-			<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
-		<![endif]-->
-    </head>
-    <body>
-        <div class="container">
-                <h2><%=title%></h2>
-                <form action="/Admin/addProduct" method="post" class="form-horizontal" accept-charset="utf-8">
+    <!-- inject:css -->
+    <link rel="stylesheet" href="/css/animate.min.css">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/owl.carousel.css">
+    <link rel="stylesheet" href="/css/responsive.css">
+    <link rel="stylesheet" href="/css/simple-sidebar.css">
+    <!-- endinject -->
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/simple-sidebar.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <a href="#">
+                        Admin Panel
+                    </a>
+                </li>
+                <% for(var i=0; i<nav.length; i++){%>
+                    <li>
+                    <a href="<%=nav[i].Link%>"><%=nav[i].Text%></a></li>
+                <%}%>
+            </ul>
+        </div>
+        <!-- /#sidebar-wrapper -->
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+                <div class="row">
+                    <h2><%=title%></h2>
+                    <form action="/Admin/addProduct" method="post" class="form-horizontal" accept-charset="utf-8">
                     <div class="form-group ">
                         <label class="col-sm-3 control-label">Producto</label>
                         <div class="col-sm-9">
                             <input id="productName" class="form-control" name="productName" placeholder="Ingrese nombre de producto" required type="text" value="<%=product.productName%>" maxlength="50">
                         </div>
-                    </div>
-                    <div class="form-group "> 
-                        <label class="col-sm-3 control-label">Precio</label>
+                        </div>
+                        <div class="form-group "> 
+                            <label class="col-sm-3 control-label">Precio</label>
                         <div class="col-sm-9">
                             <input id="productPrice" class="form-control" name="productPrice" placeholder="Ingrese precio" type="number" value="<%=product.productPrice%>" maxlength="50">
                         </div>
-                    </div>
-                    <div class="form-group">
+                        </div>
+                        <div class="form-group">
                         <div class="col-sm-offset-3 col-sm-7">
                             <button class="btn btn-default btn-success b10" type="submit" id="form-button-save"><i class="fa fa-check"></i> Actualizar</button>
-                            <a class="btn btn-default cancel-button b10" href="/panel" type="button" id="cancel-button"><i class="fa fa-warning"></i>Cancelar </a>
+                            <a class="btn btn-default cancel-button b10" href="/admin/adminPrecios" type="button" id="cancel-button"><i class="fa fa-warning"></i>Cancelar </a>
                         </div>
                     </div>
                 </form>
-                <h2>Agregar Promociones</h2>
-                <form action="/Admin/addOffer" method="post" class="form-horizontal" accept-charset="utf-8">
-                    <div class="form-group">
-                        <label class="col-sm-3 control-label">Promoción</label>
-                        <div class="col-sm-9">
-                            <input id="offerName" class="form-control" name="offerName" placeholder="Ingrese nombre para la promoción" required type="text" value="" maxlength="50">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-sm-3 control-label">Descripción</label>
-                        <div class="col-sm-9">
-                            <input id="offerDesc" class="form-control" name="offerDesc" placeholder="Ingrese nombre para la promoción" required type="text" value="" maxlength="150">
-                        </div>
-                    </div>
-                    <div class="form-group "> 
-                        <label class="col-sm-3 control-label">Precio</label>
-                        <div class="col-sm-9">
-                            <input id="offerPrice" class="form-control" name="offerPrice" placeholder="Ingrese precio" type="number" value="" maxlength="50">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="col-sm-offset-3 col-sm-7">
-                            <button class="btn btn-default btn-success b10" type="submit" id="form-button-save"><i class="fa fa-check"></i> Guardar</button>
-                            <a class="btn btn-default cancel-button b10" href="/precios" type="button" id="cancel-button"><i class="fa fa-warning"></i>Cancelar </a>
-                        </div>
-                    </div>
-                </form>
+                </div>
         </div>
-    <body>
+        <!-- /#page-content-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+</body>
+
 </html>

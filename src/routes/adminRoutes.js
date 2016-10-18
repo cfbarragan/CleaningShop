@@ -94,9 +94,8 @@ var offers = [
     ];
 
 var router = function(nav) {
-   //var bookService = require('../services/goodreadsService')();
     var adminController = require('../controllers/adminController')(null, nav);
-    var productController = require('../controllers/productController')();
+    var productController = require('../controllers/productController')(nav);
     var offerController = require('../controllers/offerController')();
     //ofertasRouter.use(bookController.middleware);
 
@@ -110,6 +109,8 @@ var router = function(nav) {
         .post(productController.addProduct);
     adminRouter.route('/product/edit/:id')
        .get(productController.getById);
+    adminRouter.route('/product/delete/:id')
+       .get(productController.deleteProduct);
     adminRouter.route('/addOffer')
         .post(offerController.addOffer);
     adminRouter.route('/addProductData')

@@ -60,25 +60,31 @@
             <div class="container-fluid">
                 <div class="row">
 
-                        <h2>Agregar Producto</h2>
+                        <h2>Agregar Oferta</h2>
                         <br/>
-                        <form action="/Admin/addProduct" method="post" class="form-horizontal" accept-charset="utf-8">
+                        <form action="/Admin/addOffer" method="post" class="form-horizontal" accept-charset="utf-8">
                             <div class="form-group ">
-                                <label class="col-sm-2 col-lg-1 control-label ">Producto</label>
+                                <label class="col-sm-2 col-lg-1 control-label ">Promoción</label>
                                 <div class="col-sm-8">
-                                    <input id="productName" class="form-control" name="productName" placeholder="Ingrese nombre de producto" required type="text" value="" maxlength="50">
+                                    <input id="offerName" class="form-control" name="offerName" placeholder="Ingrese nombre de la promo" required type="text" value="" maxlength="50">
+                                </div>
+                            </div>
+                            <div class="form-group ">
+                                <label class="col-sm-2 col-lg-1 control-label ">Descripción</label>
+                                <div class="col-sm-8">
+                                    <input id="offerDesc" class="form-control" name="offerDesc" placeholder="Ingrese descripción de la oferta" required type="text" value="" maxlength="100">
                                 </div>
                             </div>
                             <div class="form-group "> 
                                 <label class="col-sm-2  col-lg-1 control-label">Precio</label>
                                 <div class="col-sm-8">
-                                    <input id="productPrice" class="form-control" name="productPrice" placeholder="Ingrese precio" type="number" step="any" value="" maxlength="50">
+                                    <input id="offerPrice" class="form-control" name="offerPrice" placeholder="Ingrese precio" type="number" step="any" value="" maxlength="50">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <div class="col-sm-offset-1 col-sm-7">
                                     <button class="btn btn-default btn-success b10" type="submit" id="form-button-save"><i class="fa fa-check"></i> Guardar</button>
-                                    <button class="btn btn-default cancel-button b10" type="reset" id="cancel-button">Cancelar </Button>
+                                    <button class="btn btn-default cancel-button b10" type="reset" id="cancel-button">Cancelar </a>
                                 </div>
                             </div>
                         </form>
@@ -96,27 +102,29 @@
                                 <tr>
                                     <th>#</th> 
                                     <th>Nombre</th> 
+                                    <th>Descripción</th>                                     
                                     <th>Precio</th> 
                                     <th>Acciones</th>
                                 </tr>
                             </thead>
                             <tbody>
-                            <% for(var i=0; i<precios.length; i++){%>
+                            <% for(var i=0; i<ofertas.length; i++){%>
+                            <div class="row">
                                 <tr> 
                                     <th scope="row"><%=i + 1%></th> 
-                                    <td><%=precios[i].productName%></td> 
-                                    <td><span>$ </span><%=precios[i].productPrice%></td> 
+                                    <td><%=ofertas[i].offerName%></td> 
+                                    <td><%=ofertas[i].offerDesc%></td>                                     
+                                    <td><span>$ </span><%=ofertas[i].offerPrice%></td> 
                                     <td>
                                         <div class="row">
-                                            <div class="col-lg-3 col-md-2 col-sm-3 pull-left">
-                                                <a class="btn btn-default" href="product/edit/<%=precios[i]._id%>">Editar</a>
-                                                <button type="button" id="<%=precios[i]._id%>" class="btn btn-danger" data-toggle="modal" data-prodname="<%=precios[i].productName%>" data-id="<%=precios[i]._id%>" data-target="#myModal"> Eliminar
-                                                </button>
-                                                
+                                            <div class="col-lg-4 col-md-2 col-sm-3 pull-left">
+                                                <a class="btn btn-default" href="offer/edit/<%=ofertas[i]._id%>">Editar</a>
+                                                <button type="button" id="<%=ofertas[i]._id%>" class="btn btn-danger" data-toggle="modal" data-offername="<%=ofertas[i].offerName%>" data-id="<%=ofertas[i]._id%>" data-target="#myModalOffers"> Eliminar </button>
                                             </div>
                                         </div>
                                    </td> 
                                 </tr>
+                            </div>
                             <%}%> 
                             </tbody>
                         </table>
@@ -128,7 +136,7 @@
 
     </div>
     <!-- /#wrapper -->
-    <div class="modal fade" id="myModal" tabindex="-1" role="dialog">
+    <div class="modal fade" id="myModalOffers" tabindex="-1" role="dialog">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
             <div class="modal-header">
@@ -136,11 +144,11 @@
                 <h4 class="modal-title">Eliminar Producto</h4>
             </div>
             <div class="modal-body">
-                <p id='modalText'>One fine body&hellip;</p>
+                <p id='modalOfferText'></p>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <a id="delete-link" href class="btn btn-danger">Eliminar</a>
+                <a id="delete-link-offer" href class="btn btn-danger">Eliminar</a>
             </div>
             </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
@@ -148,15 +156,15 @@
 </body>
 <script>
 
-$('#myModal').on('show.bs.modal', function (event) {
+$('#myModalOffers').on('show.bs.modal', function (event) {
     debugger;
     var button = $(event.relatedTarget);
     var id = button.data('id');
-    var prodName = button.data('prodname');
-    var deltext = 'Esta seguro q desea eliminar el producto: ' + prodName;
-    $('#modalText').text(deltext);
-    var elem = $('#delete-link');
-    var url = 'product/delete/' + id
+    var prodName = button.data('offername');
+    var deltext = 'Esta seguro q desea eliminar la oferta: ' + prodName;
+    $('#modalOfferText').text(deltext);
+    var elem = $('#delete-link-offer');
+    var url = 'offer/delete/' + id
     elem.attr('href',url);
 })
 </script>

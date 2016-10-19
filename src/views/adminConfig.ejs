@@ -78,7 +78,7 @@
                             <div class="form-group">
                                 <div class="col-sm-offset-1 col-sm-7">
                                     <button class="btn btn-default btn-success b10" type="submit" id="form-button-save"><i class="fa fa-check"></i> Guardar</button>
-                                    <button class="btn btn-default cancel-button b10" type="reset" id="cancel-button">Cancelar </Button>
+                                    <a class="btn btn-default cancel-button b10" href="/precios" type="button" id="cancel-button"><i class="fa fa-warning"></i>Cancelar </a>
                                 </div>
                             </div>
                         </form>
@@ -108,11 +108,14 @@
                                     <td><span>$ </span><%=precios[i].productPrice%></td> 
                                     <td>
                                         <div class="row">
-                                            <div class="col-lg-3 col-md-2 col-sm-3 pull-left">
+                                            <div class="col-lg-1 col-md-2 col-sm-3 pull-left">
                                                 <a class="btn btn-default" href="product/edit/<%=precios[i]._id%>">Editar</a>
-                                                <button type="button" id="<%=precios[i]._id%>" class="btn btn-danger" data-toggle="modal" data-prodname="<%=precios[i].productName%>" data-id="<%=precios[i]._id%>" data-target="#myModal"> Eliminar
+                                            </div>
+                                            <div class="col-lg-1 col-md-2 col-sm-3 pull-left">
+                                              <!-- <a class="btn btn-danger" href="product/delete/<%=precios[i]._id%>">Eliminar</a> -->
+                                                <button type="button" id="<%=precios[i]._id%>" class="btn btn-danger" data-toggle="modal" data-prodname="<%=precios[i].productName%>" data-id="<%=precios[i]._id%>" data-target="#myModal">
+                                                Eliminar
                                                 </button>
-                                                
                                             </div>
                                         </div>
                                    </td> 

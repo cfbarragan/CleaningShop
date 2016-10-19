@@ -23,6 +23,34 @@ var adminController = function(contactoService, navPanel) {
             });
         };
 
+    var getAdminOferta = function(req,res) {
+            var url = 'mongodb://localhost:27017/CleanShop';
+            mongodb.connect(url, function(err,db) {
+                var collection = db.collection('offers');
+                collection.find({}).toArray(function(err, results) {
+                    res.render('adminOfertas', {
+                        title : 'Administrar Ofertas' ,
+                        nav: navPanel,
+                        ofertas : results
+                    });
+                });
+            });
+        };
+
+    var getAdminConfig = function(req,res) {
+            var url = 'mongodb://localhost:27017/CleanShop';
+            mongodb.connect(url, function(err,db) {
+                var collection = db.collection('configs');
+                collection.find({}).toArray(function(err, result) {
+                    res.render('adminConfig', {
+                        title : 'Administrar Configuraciones' ,
+                        nav: navPanel,
+                        config : result
+                    });
+                });
+            });
+        };
+
     var getAdminPrecios = function(req,res) {
             var url = 'mongodb://localhost:27017/CleanShop';
             mongodb.connect(url, function(err,db) {
@@ -35,18 +63,14 @@ var adminController = function(contactoService, navPanel) {
                     });
                 });
             });
-
-            // res.render('adminPrecios', {
-            //     title:'Administrar Precios',
-            //     nav: navPanel,
-            //     precios: null
-            // });
         };
 
     return {
         getAddProduct: getAddProduct,
         getPanel: getPanel,
-        getAdminPrecios : getAdminPrecios
+        getAdminPrecios : getAdminPrecios,
+        getAdminOferta : getAdminOferta,
+        getAdminConfig :     getAdminConfig
     };
 };
 

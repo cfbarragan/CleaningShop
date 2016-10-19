@@ -96,7 +96,7 @@ var offers = [
 var router = function(nav) {
     var adminController = require('../controllers/adminController')(null, nav);
     var productController = require('../controllers/productController')(nav);
-    var offerController = require('../controllers/offerController')();
+    var offerController = require('../controllers/offerController')(nav);
     //ofertasRouter.use(bookController.middleware);
 
     adminRouter.route('/')
@@ -107,12 +107,31 @@ var router = function(nav) {
     adminRouter.route('/addProduct')
         .get(adminController.getAddProduct)
         .post(productController.addProduct);
+
+    adminRouter.route('/adminPrecios')
+        .get(adminController.getAdminPrecios);
+
+    adminRouter.route('/adminConfig')
+        .get(adminController.getAdminConfig);
+
+    adminRouter.route('/adminOfertas')
+        .get(adminController.getAdminOferta);
+
     adminRouter.route('/product/edit/:id')
        .get(productController.getById);
+
     adminRouter.route('/product/delete/:id')
        .get(productController.deleteProduct);
+
+    adminRouter.route('/offer/edit/:id')
+       .get(offerController.getById);
+
+    adminRouter.route('/offer/delete/:id')
+       .get(offerController.deleteOffer);
+
     adminRouter.route('/addOffer')
         .post(offerController.addOffer);
+
     adminRouter.route('/addProductData')
         .get(function(req,res) {
             var url = 'mongodb://localhost:27017/CleanShop';
@@ -136,9 +155,6 @@ var router = function(nav) {
                 });
             });
         });
-
-    adminRouter.route('/adminPrecios')
-        .get(adminController.getAdminPrecios);
 
     return adminRouter;
 };

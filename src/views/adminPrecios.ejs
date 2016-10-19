@@ -25,11 +25,6 @@
     <link rel="stylesheet" href="/css/simple-sidebar.css">
     <!-- endinject -->
 
-    <!-- Bootstrap Core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Custom CSS -->
-    <link href="css/simple-sidebar.css" rel="stylesheet">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -117,7 +112,10 @@
                                                 <a class="btn btn-default" href="product/edit/<%=precios[i]._id%>">Editar</a>
                                             </div>
                                             <div class="col-lg-1 col-md-2 col-sm-3 pull-left">
-                                                <a class="btn btn-danger" href="product/delete/<%=precios[i]._id%>">Eliminar</a>
+                                              <!-- <a class="btn btn-danger" href="product/delete/<%=precios[i]._id%>">Eliminar</a> -->
+                                                <button type="button" id="<%=precios[i]._id%>" class="btn btn-danger" data-toggle="modal" data-id="<%=precios[i]._id%>" data-target="#myModal">
+                                                Eliminar
+                                                </button>
                                             </div>
                                         </div>
                                    </td> 
@@ -133,7 +131,35 @@
 
     </div>
     <!-- /#wrapper -->
-
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Modal title</h4>
+            </div>
+            <div class="modal-body">
+                <p>One fine body&hellip;</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <a id="modal-del" href class="btn btn-danger">Eliminar</a>
+            </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
 </body>
+<script>
+
+$('#myModal').on('show.bs.modal', function (e) {
+    var elem = $('#modal-del');
+    elem.attr('href','product/delete');
+    var button = $(event.relatedTarget);
+    console.log(button);
+    var id = button.data('id');
+    
+    console.log(id);
+})
+</script>
 
 </html>

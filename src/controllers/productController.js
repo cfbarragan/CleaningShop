@@ -1,6 +1,5 @@
 var mongodb = require('mongodb').MongoClient;
 var ObjectId = require('mongodb').ObjectID;
-var yesno = require('yesno');
 
 var productController = function(navPanel) {
 

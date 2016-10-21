@@ -30,6 +30,7 @@ var offerController = function(navPanel) {
                         if (results != null) {
                             console.log(results);
                             var offer = {
+                                id : id,
                                 offerName : results.offerName,
                                 offerPrice : results.offerPrice,
                                 offerDesc : results.offerDesc
@@ -60,10 +61,37 @@ var offerController = function(navPanel) {
             });
         };
 
+    var editOffer = function(req, res) {
+        var id = new ObjectId(req.body.offerId);
+        var url = 'mongodb://localhost:27017/CleanShop';
+        var desc = req.body.offerDesc;
+        var price = req.body.offerPrice;
+        mongodb.connect(url, function(err,db) {
+            var collection = db.collection('offers');
+            collection.updateOne(
+                {_id: id},
+                {
+                    $set :
+                    {
+                        'offerDesc' : desc,
+                        'offerPrice' : price
+                    }
+                }, function(err, result) {
+                    if (err != null) {
+                        console.log(err);
+                    }else {
+                        res.redirect('/admin/adminOfertas');
+                    }
+
+                });
+        });
+    };
+
     return {
         addOffer: addOffer,
         deleteOffer: deleteOffer,
-        getById : getById
+        getById : getById,
+        editOffer: editOffer
     };
 };
 

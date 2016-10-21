@@ -44,7 +44,6 @@ var productController = function(navPanel) {
 
     var editProduct = function(req,res) {
             var id = new ObjectId(req.body.productId);
-            var name = req.body.productName;
             var price =  req.body.productPrice;
             var url = 'mongodb://localhost:27017/CleanShop';
             mongodb.connect(url, function(err,db) {
@@ -54,7 +53,6 @@ var productController = function(navPanel) {
                     {
                         $set:
                         {
-                            'productName' : name,
                             'productPrice' : price
                         }
                     },

@@ -128,6 +128,9 @@ var router = function(nav) {
     adminRouter.route('/offer/edit/:id')
        .get(offerController.getById);
 
+    adminRouter.route('/offer/edit')
+       .post(offerController.editOffer);
+
     adminRouter.route('/offer/delete/:id')
        .get(offerController.deleteOffer);
 

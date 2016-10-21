@@ -119,6 +119,8 @@ var router = function(nav) {
 
     adminRouter.route('/product/edit/:id')
        .get(productController.getById);
+    adminRouter.route('/product/edit')
+       .post(productController.editProduct);
 
     adminRouter.route('/product/delete/:id')
        .get(productController.deleteProduct);

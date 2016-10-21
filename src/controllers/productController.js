@@ -28,6 +28,7 @@ var productController = function(navPanel) {
                         if (results != null) {
                             console.log(results);
                             var product = {
+                                id: id,
                                 productName : results.productName,
                                 productPrice : results.productPrice
                             };
@@ -36,6 +37,32 @@ var productController = function(navPanel) {
                                     nav : navPanel,
                                     product : product,
                                 });
+                        }
+                    });
+            });
+        };
+
+    var editProduct = function(req,res) {
+            var id = new ObjectId(req.body.productId);
+            var name = req.body.productName;
+            var price =  req.body.productPrice;
+            var url = 'mongodb://localhost:27017/CleanShop';
+            mongodb.connect(url, function(err,db) {
+                var collection = db.collection('products');
+                collection.updateOne(
+                    {_id:id},
+                    {
+                        $set:
+                        {
+                            'productName' : name,
+                            'productPrice' : price
+                        }
+                    },
+                    function(err, results) {
+                        if (err != null) {
+                            console.log(err);
+                        }else {
+                            res.redirect('/admin/adminPrecios');
                         }
                     });
             });
@@ -63,7 +90,8 @@ var productController = function(navPanel) {
     return {
         addProduct: addProduct,
         getById: getById,
-        deleteProduct: deleteProduct
+        deleteProduct: deleteProduct,
+        editProduct: editProduct
     };
 };
 

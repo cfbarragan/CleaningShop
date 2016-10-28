@@ -1,5 +1,6 @@
 var mongodb = require('mongodb').MongoClient;
 var ObjectId = require('mongodb').ObjectID;
+var configs = require('../config/configuration.js')();
 
 var ofertasController = function(bookService, nav) {
     var middleware = function(req,res,next) {
@@ -14,7 +15,7 @@ var ofertasController = function(bookService, nav) {
             //             nav: nav,
             //             books : null
             //         });
-            var url = 'mongodb://localhost:27017/CleanShop';
+            var url = configs.DataBaseUrl;
             mongodb.connect(url, function(err,db) {
                 var collection = db.collection('offers');
                 collection.find({}).toArray(function(err, results) {

@@ -4,7 +4,7 @@ var mongodb = require('mongodb').MongoClient;
 var ObjectId = require('mongodb').ObjectID;
 
 var router = function(nav) {
-   //var bookService = require('../services/goodreadsService')();
+    //var bookService = require('../services/goodreadsService')();
     var ofertasController = require('../controllers/ofertasController')(null, nav);
 
     //ofertasRouter.use(bookController.middleware);

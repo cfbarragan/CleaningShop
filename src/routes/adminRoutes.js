@@ -2,6 +2,7 @@ var express = require('express');
 var adminRouter = express.Router();
 var mongodb = require('mongodb').MongoClient;
 var ObjectId = require('mongodb').ObjectID;
+var configs = require('../config/configuration.js')();
 
 var products = [
         {
@@ -151,7 +152,7 @@ var router = function(nav) {
 
     adminRouter.route('/addOffersData')
         .get(function(req,res) {
-            var url = 'mongodb://localhost:27017/CleanShop';
+            var url = configs.DataBaseUrl;
             mongodb.connect(url, function(err,db) {
                 var collection = db.collection('offers');
                 collection.insertMany(offers, function(err, results) {

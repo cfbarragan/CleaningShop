@@ -1,5 +1,6 @@
 var mongodb = require('mongodb').MongoClient;
 var ObjectId = require('mongodb').ObjectID;
+var configs = require('../config/configuration.js')();
 
 var adminController = function(contactoService, navPanel) {
     var middleware = function(req,res,next) {
@@ -24,7 +25,7 @@ var adminController = function(contactoService, navPanel) {
         };
 
     var getAdminOferta = function(req,res) {
-            var url = 'mongodb://localhost:27017/CleanShop';
+            var url = configs.DataBaseUrl;
             mongodb.connect(url, function(err,db) {
                 var collection = db.collection('offers');
                 collection.find({}).toArray(function(err, results) {
@@ -38,7 +39,7 @@ var adminController = function(contactoService, navPanel) {
         };
 
     var getAdminConfig = function(req,res) {
-            var url = 'mongodb://localhost:27017/CleanShop';
+            var url = configs.DataBaseUrl;
             mongodb.connect(url, function(err,db) {
                 var collection = db.collection('configs');
                 collection.find({}).toArray(function(err, result) {
@@ -52,7 +53,7 @@ var adminController = function(contactoService, navPanel) {
         };
 
     var getAdminPrecios = function(req,res) {
-            var url = 'mongodb://localhost:27017/CleanShop';
+            var url = configs.DataBaseUrl;
             mongodb.connect(url, function(err,db) {
                 var collection = db.collection('products');
                 collection.find({}).toArray(function(err, results) {

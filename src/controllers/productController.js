@@ -1,11 +1,12 @@
 var mongodb = require('mongodb').MongoClient;
 var ObjectId = require('mongodb').ObjectID;
+var configs = require('../config/configuration.js')();
 
 var productController = function(navPanel) {
 
     var addProduct = function(req,res) {
         console.log(req.body);
-        var url = 'mongodb://localhost:27017/CleanShop';
+        var url = configs.DataBaseUrl;
         mongodb.connect(url, function(err,db) {
                 var collection = db.collection('products');
                 var product = {
@@ -20,7 +21,7 @@ var productController = function(navPanel) {
 
     var getById = function(req,res) {
             var id = new ObjectId(req.params.id);
-            var url = 'mongodb://localhost:27017/CleanShop';
+            var url = configs.DataBaseUrl;
             mongodb.connect(url, function(err,db) {
                 var collection = db.collection('products');
                 collection.findOne({_id:id},
@@ -45,7 +46,7 @@ var productController = function(navPanel) {
     var editProduct = function(req,res) {
             var id = new ObjectId(req.body.productId);
             var price =  req.body.productPrice;
-            var url = 'mongodb://localhost:27017/CleanShop';
+            var url = 'mongodb://cleanGenUser:jime150187@ds057816.mlab.com:57816/cleanshop';
             mongodb.connect(url, function(err,db) {
                 var collection = db.collection('products');
                 collection.updateOne(
@@ -68,7 +69,7 @@ var productController = function(navPanel) {
 
     var deleteProduct = function(req,res) {
             var id = new ObjectId(req.params.id);
-            var url = 'mongodb://localhost:27017/CleanShop';
+            var url = 'mongodb://cleanGenUser:jime150187@ds057816.mlab.com:57816/cleanshop';
             mongodb.connect(url, function(err,db) {
                 var collection = db.collection('products');
                 collection.remove({_id:id},

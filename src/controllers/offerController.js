@@ -1,12 +1,12 @@
 var mongodb = require('mongodb').MongoClient;
 var ObjectId = require('mongodb').ObjectID;
-
+var configs = require('../config/configuration.js')();
 
 var offerController = function(navPanel) {
 
     var addOffer = function(req,res) {
         console.log(req.body);
-        var url = 'mongodb://localhost:27017/CleanShop';
+        var url = configs.DataBaseUrl;
         mongodb.connect(url, function(err,db) {
                 var collection = db.collection('offers');
                 var offer = {
@@ -22,7 +22,7 @@ var offerController = function(navPanel) {
 
     var getById = function(req,res) {
             var id = new ObjectId(req.params.id);
-            var url = 'mongodb://localhost:27017/CleanShop';
+            var url = configs.DataBaseUrl;
             mongodb.connect(url, function(err,db) {
                 var collection = db.collection('offers');
                 collection.findOne({_id:id},
@@ -47,7 +47,7 @@ var offerController = function(navPanel) {
 
     var deleteOffer = function(req,res) {
             var id = new ObjectId(req.params.id);
-            var url = 'mongodb://localhost:27017/CleanShop';
+            var url = configs.DataBaseUrl;
             mongodb.connect(url, function(err,db) {
                 var collection = db.collection('offers');
                 collection.remove({_id:id},
@@ -63,7 +63,7 @@ var offerController = function(navPanel) {
 
     var editOffer = function(req, res) {
         var id = new ObjectId(req.body.offerId);
-        var url = 'mongodb://localhost:27017/CleanShop';
+        var url = configs.DataBaseUrl;
         var desc = req.body.offerDesc;
         var price = req.body.offerPrice;
         mongodb.connect(url, function(err,db) {

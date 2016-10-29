@@ -9,7 +9,7 @@ var configurations = function() {
     };
 
     return {
-        DataBaseUrl: getDataBaseUrl,
+        DataBaseUrl: DATABASE_URL,
     };
 };
 

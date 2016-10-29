@@ -40,10 +40,7 @@ app.use('/Contacto', contactoRouter);
 app.use('/Admin', adminRouter);
 
 app.get('/', function(req,res) {
-    res.render('precios', {
-        title : 'precios' ,
-        nav : nav
-    });
+    res.redirect('/precios');
 });
 
 app.listen(port, function(err) {

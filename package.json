@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node app.js",
-    "postinstall" : "./node_modules/bower/bin/bower install/bower cache clean && ./node_modules/bower/bin/bower install/bower install && gulp serve"
+    "postinstall" : "./node_modules/bower/bin/bower install ./node_modules/bower/bin/bower cache clean && ./node_modules/bower/bin/bower install/bower install && gulp serve"
   },
   "repository": {
     "type": "git",

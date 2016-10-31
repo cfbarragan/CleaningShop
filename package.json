@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node app.js",
-    "postinstall" : "bower cache clean && bower install && gulp serve"
+    "postinstall" : "./node_modules/bower/bin/bower install/bower cache clean && ./node_modules/bower/bin/bower install/bower install && gulp serve"
   },
   "repository": {
     "type": "git",
@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/cfbarragan/CleaningShop#readme",
   "dependencies": {
+    "bower": "0.6.x",
     "body-parser": "^1.15.2",
     "cookie-parser": "^1.4.3",
     "ejs": "^2.5.2",

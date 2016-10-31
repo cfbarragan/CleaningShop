@@ -1,6 +1,9 @@
 {
   "name": "cleaningshop",
   "version": "1.0.0",
+  "engines": {
+    "node": "4.5.0"
+  },
   "description": "Pagina para precios de negocio de limpieza",
   "main": "app.js",
   "scripts": {
@@ -33,6 +36,7 @@
     "gulp-nodemon": "^2.1.0",
     "http": "0.0.0",
     "jscs": "^3.0.7",
+    "jshint": "^2.9.4",
     "jshint-stylish": "^2.2.1",
     "mongodb": "^2.2.10",
     "passport": "^0.3.2",

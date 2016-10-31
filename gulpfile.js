@@ -38,14 +38,4 @@ gulp.task('inject', function() {
 });
 
 gulp.task('serve', ['style', 'inject'], function() {
-    var options = {
-        script : 'app.js',
-        delaytime: 1,
-        watch: jsFiles
-    };
-
-    return nodemon(options)
-        .on('restart', function(ev) {
-            console.log('Restarting....');
-        });
 });

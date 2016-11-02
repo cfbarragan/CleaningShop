@@ -13,7 +13,7 @@
 
 
     "start" : "node app.js",
-    "postinstall" : "bower install && gulp serve"
+    "postinstall" : "bower install"
 
   },
   "repository": {

@@ -39,3 +39,19 @@ gulp.task('inject', function() {
 
 gulp.task('serve', ['style', 'inject'], function() {
 });
+
+gulp.task('servedev', ['style', 'inject'], function() {
+    var options = {
+        script : 'app.js',
+        delaytime: 1,
+        env: {
+            'PORT' : 5000
+        },
+        watch: jsFiles
+    };
+
+    return nodemon(options)
+        .on('restart', function(ev) {
+            console.log('Restarting....');
+        });
+});

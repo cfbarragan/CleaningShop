@@ -4,9 +4,9 @@ var configs = require('../config/configuration.js')();
 
 var adminController = function(contactoService, navPanel) {
     var middleware = function(req,res,next) {
-        // if (!req.user) {
-        //     res.redirect('/');
-        // }
+        if (!req.user) {
+            res.redirect('/login');
+        }
         next();
     };
     var getAddProduct = function(req,res) {

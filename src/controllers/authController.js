@@ -2,6 +2,7 @@ var authcontroller = function() {
     var middleware = function(req,res,next) {
         if (!req.user) {
             res.redirect('/auth/login');
+            return;
         }
         next();
     };

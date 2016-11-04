@@ -10,7 +10,7 @@ var router = function() {
         res.render('login', null);
     })
     .post(passport.authenticate('local', {
-        failureRedirect : '/login'
+        failureRedirect : '/auth/login',
     }), function(err,res) {
         res.redirect('/admin/panel');
     });

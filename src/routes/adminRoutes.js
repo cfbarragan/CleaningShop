@@ -4,10 +4,10 @@ var mongodb = require('mongodb').MongoClient;
 var ObjectId = require('mongodb').ObjectID;
 var configs = require('../config/configuration.js')();
 
-var router = function(nav) {
-    var adminController = require('../controllers/adminController')(null, nav);
-    var productController = require('../controllers/productController')(nav);
-    var offerController = require('../controllers/offerController')(nav);
+var router = function(nav,configs) {
+    var adminController = require('../controllers/adminController')(null, nav,configs);
+    var productController = require('../controllers/productController')(nav,configs);
+    var offerController = require('../controllers/offerController')(nav,configs);
     var authController = require('../controllers/authController')();
     adminRouter.use(authController.middleware);
 

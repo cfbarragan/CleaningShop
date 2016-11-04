@@ -1,9 +1,8 @@
 var passport = require('passport'),
     LocalStrategy = require('passport-local').Strategy,
     mongodb = require('mongodb').MongoClient;
-var configs = require('../../config/configuration.js')();
 
-module.exports = function() {
+module.exports = function(configs) {
     passport.use(new LocalStrategy({
         usernameField:'username',
         passwordField:'userpassword'
@@ -14,11 +13,15 @@ module.exports = function() {
                 var collection = db.collection('users');
                 collection.findOne({
                     username: username}, function(err, results) {
-                        if (results.userpassword === password) {
-                            var user = results;
-                            done(null,user);
-                        } else {
-                            done(null,false, {message : 'Usuario o contraseña incorrectos'});
+                        if (results != null) {
+                            if (results.userpassword === password) {
+                                var user = results;
+                                done(null,user);
+                            } else {
+                                done(null,false, {message : 'Usuario o contraseña incorrectos'});
+                            }
+                        }else {
+                            done(null, false, {message : 'Usuario o contraseña incorrectos'});
                         }
                     });
             });

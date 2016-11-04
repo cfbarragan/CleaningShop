@@ -1,8 +1,7 @@
 var mongodb = require('mongodb').MongoClient;
 var ObjectId = require('mongodb').ObjectID;
-var configs = require('../config/configuration.js')();
 
-var productController = function(navPanel) {
+var productController = function(navPanel,configs) {
 
     var addProduct = function(req,res) {
         console.log(req.body);

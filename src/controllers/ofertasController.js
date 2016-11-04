@@ -1,8 +1,7 @@
 var mongodb = require('mongodb').MongoClient;
 var ObjectId = require('mongodb').ObjectID;
-var configs = require('../config/configuration.js')();
 
-var ofertasController = function(bookService, nav) {
+var ofertasController = function(bookService, nav,configs) {
     var middleware = function(req,res,next) {
         // if (!req.user) {
         //     res.redirect('/');

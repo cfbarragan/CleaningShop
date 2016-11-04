@@ -1,7 +1,7 @@
 var mongodb = require('mongodb').MongoClient;
 var ObjectId = require('mongodb').ObjectID;
 
-var contactoController = function(contactoService, nav) {
+var contactoController = function(contactoService, nav,configs) {
     var middleware = function(req,res,next) {
         // if (!req.user) {
         //     res.redirect('/');
@@ -9,7 +9,7 @@ var contactoController = function(contactoService, nav) {
         next();
     };
     var getIndex = function(req,res) {
-            res.render('Contacto', {
+            res.render('contacto', {
                         title : 'Contacto' ,
                         nav: nav,
                         books : null
@@ -26,25 +26,6 @@ var contactoController = function(contactoService, nav) {
             //     });
             // });
         };
-
-    // var getById = function(req,res) {
-    //         var id = new ObjectId(req.params.id);
-    //         var url = 'mongodb://localhost:27017/libraryApp';
-    //         mongodb.connect(url, function(err,db) {
-    //             var collection = db.collection('books');
-    //             collection.findOne({_id:id},
-    //                 function(err, results) {
-    //                     bookService.getBookById(results.bookId, function(err, book) {
-    //                         results.book = book;
-    //                         res.render('bookView', {
-    //                             title : 'Books' ,
-    //                             nav: nav,
-    //                             book : results
-    //                         });
-    //                     });
-    //                 });
-    //         });
-    //     };
 
     return {
         getIndex: getIndex,

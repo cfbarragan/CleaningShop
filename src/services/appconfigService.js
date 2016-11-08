@@ -3,13 +3,17 @@ var ObjectId = require('mongodb').ObjectID;
 
 var appconfigService = function(configs) {
 
-    var generalconfig = function() {
+    var generalconfig = function(done) {
             var url = configs.DataBaseUrl;
             var config;
             mongodb.connect(url, function(err,db) {
-                var collection = db.collection('offers');
+                var collection = db.collection('config');
                 collection.find({}, function(err,result) {
-                    return result;
+                    if (err) {
+                        console.log(err);
+                        done(err,null);
+                    }
+                    done(null,result);
                 });
             });
         };

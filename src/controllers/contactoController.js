@@ -1,6 +1,5 @@
 var mongodb = require('mongodb').MongoClient;
 var ObjectId = require('mongodb').ObjectID;
-
 var contactoController = function(contactoService, nav,configs) {
     var middleware = function(req,res,next) {
         // if (!req.user) {
@@ -9,11 +8,15 @@ var contactoController = function(contactoService, nav,configs) {
         next();
     };
     var getIndex = function(req,res) {
-            res.render('contacto', {
+
+            var configService = require('../services/appconfigService')(configs);
+            configService.getgeneralconfig(function(err,result) {
+                    res.render('contacto', {
                         title : 'Contacto' ,
                         nav: nav,
-                        books : null
+                        configs : result
                     });
+                });
             // var url = 'mongodb://localhost:27017/libraryApp';
             // mongodb.connect(url, function(err,db) {
             //     var collection = db.collection('books');

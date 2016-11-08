@@ -4,7 +4,6 @@ var ObjectId = require('mongodb').ObjectID;
 var offerController = function(navPanel,configs) {
 
     var addOffer = function(req,res) {
-        console.log(req.body);
         var url = configs.DataBaseUrl;
         mongodb.connect(url, function(err,db) {
                 var collection = db.collection('offers');

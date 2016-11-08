@@ -22,7 +22,7 @@
     <link rel="stylesheet" href="/css/main.css">
     <link rel="stylesheet" href="/css/owl.carousel.css">
     <link rel="stylesheet" href="/css/responsive.css">
-
+    <link rel="stylesheet" href="/css/signin.css">
     <link rel="stylesheet" href="/css/simple-sidebar.css">
     <!-- endinject -->
 
@@ -61,72 +61,53 @@
             <div class="container-fluid">
                 <div class="row">
 
-                        <h2>Agregar Producto</h2>
+                        <h2>Información General</h2>
                         <br/>
-                        <form action="/Admin/addProduct" method="post" class="form-horizontal" accept-charset="utf-8">
+                        <form action="/Admin/editinfo" method="post" class="form-horizontal" accept-charset="utf-8">
                             <div class="form-group ">
-                                <label class="col-sm-2 col-lg-1 control-label ">Producto</label>
+                                <label class="col-sm-2 col-lg-2 control-label ">Teléfono</label>
                                 <div class="col-sm-8">
-                                    <input id="productName" class="form-control" name="productName" placeholder="Ingrese nombre de producto" required type="text" value="" maxlength="50">
+                                    <input id="phoneNumber" class="form-control" name="phoneNumber" placeholder="(0221) 15 123456" required type="text" required value="" maxlength="50">
                                 </div>
                             </div>
                             <div class="form-group "> 
-                                <label class="col-sm-2  col-lg-1 control-label">Precio</label>
+                                <label class="col-sm-2  col-lg-2 control-label">Dirección</label>
+
                                 <div class="col-sm-8">
-                                    <input id="productPrice" class="form-control" name="productPrice" placeholder="Ingrese precio" type="number" step="any" value="" maxlength="50">
+                                    <input id="address" class="form-control" name="address" placeholder="Ingrese dirección" type="text" required  value="" maxlength="80">
+                                </div>
+                            </div>
+                            <div class="form-group "> 
+                                <label class="col-sm-2  col-lg-2 control-label">Email</label>
+ 
+                                <div class="col-sm-8">
+                                    <input id="email" class="form-control" name="email" placeholder="Ingrese email" type="email" required value="" maxlength="80">
+                                </div>
+                            </div>
+                            <div class="form-group "> 
+                                <label class="col-sm-2  col-lg-2 control-label">Facebook Link</label>
+ 
+                                <div class="col-sm-8">
+                                    <input id="facebook" class="form-control" name="facebook" placeholder="Ingrese link del perfil de facebook" type="email"  value="" maxlength="200">
+                                </div>
+                            </div>
+                             <div class="form-group "> 
+                                <label class="col-sm-2  col-lg-2 control-label">Twiter Link</label>
+ 
+                                <div class="col-sm-8">
+                                    <input id="twitter" class="form-control" name="twitter" placeholder="Ingrese link del perfil de twitter" type="email"  value="" maxlength="200">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <div class="col-sm-offset-1 col-sm-7">
                                     <button class="btn btn-default btn-success b10" type="submit" id="form-button-save"><i class="fa fa-check"></i> Guardar</button>
-                                    <a class="btn btn-default cancel-button b10" href="/precios" type="button" id="cancel-button"><i class="fa fa-warning"></i>Cancelar </a>
+                                    <button class="btn btn-default cancel-button b10"  type="reset" id="cancel-button"><i class="fa fa-warning"></i>Limpiar </button>
                                 </div>
                             </div>
                         </form>
                 </div>
-                <div class="row">
-                <h2>Productos en el sistema</h2>
-                <br/>
-                <div class="panel panel-default">
-                    <!-- Default panel contents -->
-                    <div class="panel-heading">Productos</div>
+                
 
-                    <!-- Table -->
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th>#</th> 
-                                    <th>Nombre</th> 
-                                    <th>Precio</th> 
-                                    <th>Acciones</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                            <% for(var i=0; i<precios.length; i++){%>
-                                <tr> 
-                                    <th scope="row"><%=i + 1%></th> 
-                                    <td><%=precios[i].productName%></td> 
-                                    <td><span>$ </span><%=precios[i].productPrice%></td> 
-                                    <td>
-                                        <div class="row">
-                                            <div class="col-lg-1 col-md-2 col-sm-3 pull-left">
-                                                <a class="btn btn-default" href="product/edit/<%=precios[i]._id%>">Editar</a>
-                                            </div>
-                                            <div class="col-lg-1 col-md-2 col-sm-3 pull-left">
-                                              <!-- <a class="btn btn-danger" href="product/delete/<%=precios[i]._id%>">Eliminar</a> -->
-                                                <button type="button" id="<%=precios[i]._id%>" class="btn btn-danger" data-toggle="modal" data-prodname="<%=precios[i].productName%>" data-id="<%=precios[i]._id%>" data-target="#myModal">
-                                                Eliminar
-                                                </button>
-                                            </div>
-                                        </div>
-                                   </td> 
-                                </tr>
-                            <%}%> 
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
         </div>
         <!-- /#page-content-wrapper -->
 

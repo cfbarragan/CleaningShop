@@ -41,11 +41,11 @@ var adminController = function(contactoService, navPanel,configs) {
             var url = configs.DataBaseUrl;
             mongodb.connect(url, function(err,db) {
                 var collection = db.collection('configs');
-                collection.find({}).toArray(function(err, result) {
+                collection.find({}).toArray(function(err, results) {
                     res.render('adminConfig', {
                         title : 'Administrar Configuraciones' ,
                         nav: navPanel,
-                        config : result
+                        config : results
                     });
                 });
             });
@@ -70,7 +70,7 @@ var adminController = function(contactoService, navPanel,configs) {
         getPanel: getPanel,
         getAdminPrecios : getAdminPrecios,
         getAdminOferta : getAdminOferta,
-        getAdminConfig :     getAdminConfig
+        getAdminConfig : getAdminConfig
     };
 };
 

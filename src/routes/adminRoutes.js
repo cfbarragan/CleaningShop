@@ -23,6 +23,9 @@ var router = function(nav,configs) {
     adminRouter.route('/adminPrecios')
         .get(adminController.getAdminPrecios);
 
+    adminRouter.route('/editinfo')
+        .post(adminController.editInfo);
+
     adminRouter.route('/adminConfig')
         .get(adminController.getAdminConfig);
 

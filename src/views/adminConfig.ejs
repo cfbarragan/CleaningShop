@@ -64,41 +64,64 @@
                         <h2>Información General</h2>
                         <br/>
                         <form action="/Admin/editinfo" method="post" class="form-horizontal" accept-charset="utf-8">
+                        <input class="hidden" value="<%=config._id%>" name="configId" />
                             <div class="form-group ">
-                                <label class="col-sm-2 col-lg-2 control-label ">Teléfono</label>
+                                <label class="col-sm-2 col-lg-1 control-label ">Teléfono</label>
                                 <div class="col-sm-8">
-                                    <input id="phoneNumber" class="form-control" name="phoneNumber" placeholder="(0221) 15 123456" required type="text" required value="" maxlength="50">
+                                    <input id="phoneNumber" class="form-control" name="phoneNumber" placeholder="(0221) 15 123456" required type="text" required value="<%=config.phoneNumber%>" maxlength="50">
                                 </div>
                             </div>
                             <div class="form-group "> 
-                                <label class="col-sm-2  col-lg-2 control-label">Dirección</label>
+                                <label class="col-sm-2  col-lg-1 control-label">Dirección</label>
 
                                 <div class="col-sm-8">
-                                    <input id="address" class="form-control" name="address" placeholder="Ingrese dirección" type="text" required  value="" maxlength="80">
+                                    <input id="address" class="form-control" name="address" placeholder="Ingrese dirección" type="text" required  value="<%=config.address%>" maxlength="80">
                                 </div>
                             </div>
                             <div class="form-group "> 
-                                <label class="col-sm-2  col-lg-2 control-label">Email</label>
- 
-                                <div class="col-sm-8">
-                                    <input id="email" class="form-control" name="email" placeholder="Ingrese email" type="email" required value="" maxlength="80">
+                                <label class="col-sm-2  col-lg-1 control-label">Email</label>
+                                 <div class="col-sm-8">
+                                    <input id="email" class="form-control" name="email" placeholder="Ingrese email" type="email" required value="<%=config.email%>" maxlength="80">
                                 </div>
                             </div>
                             <div class="form-group "> 
-                                <label class="col-sm-2  col-lg-2 control-label">Facebook Link</label>
- 
-                                <div class="col-sm-8">
-                                    <input id="facebook" class="form-control" name="facebook" placeholder="Ingrese link del perfil de facebook" type="email"  value="" maxlength="200">
+                                <label class="col-sm-2  col-lg-1 control-label">Facebook Link</label>
+                                 <div class="col-sm-8">
+                                    <input id="facebook" class="form-control" name="facebookLink" placeholder="Ingrese link del perfil de facebook" type="text"  value="<%=config.facebookLink%>" >
                                 </div>
                             </div>
                              <div class="form-group "> 
-                                <label class="col-sm-2  col-lg-2 control-label">Twiter Link</label>
- 
-                                <div class="col-sm-8">
-                                    <input id="twitter" class="form-control" name="twitter" placeholder="Ingrese link del perfil de twitter" type="email"  value="" maxlength="200">
+                                <label class="col-sm-2  col-lg-1 control-label">Twiter Link</label>
+                                 <div class="col-sm-8">
+                                    <input id="twitter" class="form-control" name="twiterLink" placeholder="Ingrese link del perfil de twitter" type="text"  value="<%=config.twiterLink%>" >
                                 </div>
                             </div>
                             <div class="form-group">
+                                <div class="col-sm-offset-1 col-sm-7">
+                                    <button class="btn btn-default btn-success b10" type="submit" id="form-button-save"><i class="fa fa-check"></i> Guardar</button>
+                                    <button class="btn btn-default cancel-button b10"  type="reset" id="cancel-button"><i class="fa fa-warning"></i>Limpiar </button>
+                                </div>
+                            </div>
+                        </form>
+                </div>
+                <div class="row">
+                	    <h2>Precios y Ofertas</h2>
+                        <br/>
+                        <form action="" method="post" class="form-horizontal" accept-charset="utf-8">
+                        <input class="hidden" value="<%=config._id%>" name="configId" />
+                        <div class="form-group ">
+                            <label class="col-sm-2 col-lg-1 control-label pull-left">Precios</label>
+                            <div class="col-sm-8 col-lg-8" >
+                                <input id="preciosMessage" class="form-control" name="preciosMessage" placeholder="Este mensaje se visualizara debajo del tìtulo en los precios" required type="text" value="" maxlength="50">
+                            </div>
+                        </div>
+                        <div class="form-group ">
+                            <label class="col-sm-2 col-lg-1 control-label pull-left">Ofertas</label>
+                            <div class="col-sm-8 col-lg-8" >
+                                <input id="ofertasMessage" class="form-control" name="ofertasMessage" placeholder="Este mensaje se visualizara debajo del tìtulo en las ofertas" required type="text" value="" maxlength="50">
+                            </div>
+                        </div>
+                        <div class="form-group">
                                 <div class="col-sm-offset-1 col-sm-7">
                                     <button class="btn btn-default btn-success b10" type="submit" id="form-button-save"><i class="fa fa-check"></i> Guardar</button>
                                     <button class="btn btn-default cancel-button b10"  type="reset" id="cancel-button"><i class="fa fa-warning"></i>Limpiar </button>

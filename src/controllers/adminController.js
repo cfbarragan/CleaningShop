@@ -42,10 +42,11 @@ var adminController = function(contactoService, navPanel,configs) {
             mongodb.connect(url, function(err,db) {
                 var collection = db.collection('configs');
                 collection.find({}).toArray(function(err, results) {
+                    console.log(results);
                     res.render('adminConfig', {
                         title : 'Administrar Configuraciones' ,
                         nav: navPanel,
-                        config : results
+                        config : results[0]
                     });
                 });
             });
@@ -65,12 +66,40 @@ var adminController = function(contactoService, navPanel,configs) {
             });
         };
 
+    var editInfo = function(req,res) {
+            var id = new ObjectId(req.body.configId);
+            var url = configs.DataBaseUrl;
+            mongodb.connect(url, function(err,db) {
+                var collection = db.collection('configs');
+                collection.updateOne(
+                {_id:id},
+                    {
+                        $set:
+                        {
+                            'phoneNumber' : req.body.phoneNumber,
+                            'address': req.body.address,
+                            'email': req.body.email,
+                            'facebookLink': req.body.facebookLink,
+                            'twiterLink':req.body.twiterLink
+                        }
+                    },
+                    function(err, results) {
+                        if (err != null) {
+                            console.log(err);
+                        }else {
+                            res.redirect('/admin/adminConfig');
+                        }
+                    });
+            });
+        }
+
     return {
         getAddProduct: getAddProduct,
         getPanel: getPanel,
         getAdminPrecios : getAdminPrecios,
         getAdminOferta : getAdminOferta,
-        getAdminConfig : getAdminConfig
+        getAdminConfig : getAdminConfig,
+        editInfo: editInfo
     };
 };
 

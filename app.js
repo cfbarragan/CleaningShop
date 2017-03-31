@@ -55,7 +55,12 @@ app.use('/Admin', adminRouter);
 app.use('/Auth', authRouter);
 
 app.get('/', function(req,res) {
-    res.redirect('/precios');
+    //res.redirect('/precios');
+    res.render('init', {
+                        // title : 'precios' ,
+                        nav: nav,
+                        // products : results
+    });
 });
 
 app.listen(port, function(err) {

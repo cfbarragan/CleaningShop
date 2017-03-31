@@ -1,42 +1,24 @@
 /* var text-decoration */
 @font-face {
-  font-family: myfont;
+  /*font-family: myfont;*/
   src: url(../fonts/ufonts.com_tw-cen-mt.ttf);
 }
 /*--
     Common Css
 --*/
 body {
-  font-family: myfont;
+  /*font-family: myfont;*/
   font-size: 14px;
   font-weight: 400;
+   padding-top: 70px; /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
 }
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  margin: 0px;
-  font-family: myfont;
-}
-h1 {
-  font-size: 36px;
-}
-h2 {
-  font-size: 24px;
-  font-weight: 500;
-}
-h3 {
-  font-size: 20px;
-  font-weight: 600;
-}
+
 p {
   font-size: 14px;
   font-weight: 400;
   line-height: 20px;
   margin: 0px;
-  font-family: myfont;
+  /*font-family: myfont;*/
 }
 ul {
   padding: 0;
@@ -687,6 +669,9 @@ nav .block .navbar-default .navbar-nav > .active > a:hover:before {
 #footer-bottom {
   background: #E9E9E9;
   padding: 20px 0px;
+  position: static;
+  width: 100%;
+  bottom: 0;
 }
 #footer-bottom p {
   text-align: center;
@@ -698,4 +683,191 @@ nav .block .navbar-default .navbar-nav > .active > a:hover:before {
 }
 #footer-bottom p a {
   color: #FF4F02;
+}
+
+.hero-feature {
+    margin-bottom: 30px;
+}
+
+.block {
+    display: inline-block;
+    position: relative;
+    width: 100%;
+    margin-bottom: 30px;
+    border-radius: 6px;
+    color: rgba(0, 0, 0, 0.87);
+    background: #fff;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+}
+
+.block-caption {
+    font-weight: 700;
+    font-family: "Lato", "Times New Roman", serif;
+    color: #3C4857;
+}
+
+.block-plain {
+    background: transparent;
+    box-shadow: none;
+}
+
+.block .category:not([class*="text-"]) {
+    color: #3C4857;
+}
+
+.block-background {
+    background-position: center center;
+    background-size: cover;
+    text-align: center;
+}
+
+.block-raised {
+    box-shadow: 0 16px 38px -12px rgba(0, 0, 0, 0.56), 0 4px 25px 0px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2);
+}
+
+.block-background .table {
+    position: relative;
+    z-index: 2;
+    min-height: 280px;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    max-width: 440px;
+    margin: 0 auto;
+}
+
+.block-background .block-caption {
+    color: #FFFFFF;
+    margin-top: 10px;
+}
+
+.block-pricing.block-background:after {
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.block-background:after {
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    display: block;
+    left: 0;
+    top: 0;
+    content: "";
+    background-color: rgba(0, 0, 0, 0.56);
+    border-radius: 6px;
+}
+
+[class*="pricing-"] {
+    padding: 90px 0 60px 0;
+}
+
+
+
+.block-pricing {
+    text-align: center;
+}
+
+.block-pricing .block-caption {
+    margin-top: 30px;
+}
+
+.block-pricing .table {
+    padding: 15px !important;
+    margin-bottom: 0px;
+}
+
+.block-pricing .icon {
+    padding: 10px 0 0px;
+    color: #3C4857;
+}
+
+.block-pricing .icon i {
+    font-size: 55px;
+    border: 1px solid #ececec;
+    border-radius: 50%;
+    width: 130px;
+    line-height: 130px;
+    height: 130px;
+}
+
+.block-pricing h1 small {
+    font-size: 18px;
+}
+
+.block-pricing h1 small:first-child {
+    position: relative;
+    top: -17px;
+    font-size: 26px;
+}
+
+.block-pricing ul {
+    list-style: none;
+    padding: 0;
+    max-width: 240px;
+    margin: 10px auto;
+}
+
+.block-pricing ul li {
+    color: #3C4857;
+    text-align: center;
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(153, 153, 153, 0.3);
+}
+
+.block-pricing ul li:last-child {
+    border: 0;
+}
+
+.block-pricing ul li b {
+    color: #3C4857;
+}
+
+.block-pricing ul li i {
+    top: 6px;
+    position: relative;
+}
+
+.block-pricing.block-background ul li,
+.block-pricing [class*="table-"] ul li {
+    color: #FFFFFF;
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+.block-pricing.block-background ul li b,
+.block-pricing [class*="table-"] ul li b {
+    color: #FFFFFF;
+}
+
+.block-pricing.block-background [class*="text-"],
+.block-pricing [class*="table-"] [class*="text-"] {
+    color: #FFFFFF;
+}
+
+.block-pricing.block-background:after {
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.block-background:not(.block-pricing) .btn {
+    margin-bottom: 0;
+}
+
+.block .table-primary {
+    background: linear-gradient(60deg, #ab47bc, #7b1fa2);
+}
+
+
+.block [class*="table-"] .block-caption a,
+.block [class*="table-"] .block-caption,
+.block [class*="table-"] .icon i {
+    color: #FFFFFF;
+}
+
+.block-pricing .block-caption {
+    margin-top: 30px;
+}
+
+.block [class*="table-"] h1 small,
+.block [class*="table-"] h2 small,
+.block [class*="table-"] h3 small {
+    color: rgba(255, 255, 255, 0.8);
 }

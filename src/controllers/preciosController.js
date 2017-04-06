@@ -1,5 +1,6 @@
 var mongodb = require('mongodb').MongoClient;
 var ObjectId = require('mongodb').ObjectID;
+var viewName = 'listaPrecios';
 
 var preciosController = function(preciosService, nav,configs) {
     var middleware = function(req,res,next) {
@@ -13,7 +14,7 @@ var preciosController = function(preciosService, nav,configs) {
             mongodb.connect(url, function(err,db) {
                 var collection = db.collection('products');
                 collection.find({}).toArray(function(err, results) {
-                    res.render('precios', {
+                    res.render(viewName, {
                         title : 'precios' ,
                         nav: nav,
                         products : results
@@ -21,25 +22,6 @@ var preciosController = function(preciosService, nav,configs) {
                 });
             });
         };
-
-    // var getById = function(req,res) {
-    //         var id = new ObjectId(req.params.id);
-    //         var url = 'mongodb://localhost:27017/libraryApp';
-    //         mongodb.connect(url, function(err,db) {
-    //             var collection = db.collection('books');
-    //             collection.findOne({_id:id},
-    //                 function(err, results) {
-    //                     bookService.getBookById(results.bookId, function(err, book) {
-    //                         results.book = book;
-    //                         res.render('bookView', {
-    //                             title : 'Books' ,
-    //                             nav: nav,
-    //                             book : results
-    //                         });
-    //                     });
-    //                 });
-    //         });
-    //     };
 
     return {
         getIndex: getIndex,

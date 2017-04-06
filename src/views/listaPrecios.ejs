@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Ls Limpieza</title>
+        	<meta name="description" content="">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- bower:css -->
+        <!-- endbower -->
+        <!-- bower:js -->
+        <script src="/lib/jquery/dist/jquery.js"></script>
+        <script src="/lib/bootstrap/dist/js/bootstrap.js"></script>
+        <!-- endbower -->   
+        <!-- inject:css -->
+        <link rel="stylesheet" href="/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/css/newMain.css">
+         <link rel="stylesheet" href="/css/priceItem.css">
+        
+        
+        <!-- endinject -->
+        <!-- inject:js -->
+        <script src="/js/jquery.nav.js"></script>
+        <script src="/js/plugins.js"></script>
+
+        <!-- endinject -->
+
+		<!--[if lt IE 9]>
+			<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+    </head>
+    <body>
+        <nav class="navbar navbar-default navbar-fixed-top " role="navigation">
+            <div class="container">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">LS Limpieza</a>
+                </div>
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav navbar-right" id="top-nav">
+                                    <% for(var i=0; i<nav.length; i++){%>
+                                        <li>
+                                        <a href="<%=nav[i].Link%>"><%=nav[i].Text%></a></li>
+                                    <%}%>
+                                </ul>
+                </div>
+                <!-- /.navbar-collapse -->
+            </div>
+            <!-- /.container -->
+        </nav>
+    </body>
+</html>

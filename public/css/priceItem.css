@@ -45,6 +45,7 @@
 hr {
   background-color: #dedede;
   border: none;
+  margin-top:9px;
   height: 1px;
 }
 .trial {
@@ -65,20 +66,12 @@ ul {
   text-align: left;
   margin-top: 29px;
 }
-li.chuly {
-  margin-bottom: 15px;
-}
+
 .checkIcon {
   font-family: "FontAwesome";
   content: "\f00c";
 }
-li::before {
-  font-family: "FontAwesome";
-  /*content: "\f00c";*/
-  font-size: 1.3rem;
-  color: #33c4b6;
-  margin-right: 3px;
-}
+
 .brilliant {
   border-color: #33c4b6;
 }

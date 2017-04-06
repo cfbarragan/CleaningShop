@@ -8,13 +8,14 @@ var DB_PASSWORD = 'jime150187';
 var app = express();
 
 var port = process.env.PORT || 5000;
-var dataBaseUrl = process.env.DATABASE_URL ||  'mongodb://' + DB_USER_NAME + ':' + DB_PASSWORD + '@ds057816.mlab.com:57816/cleanshop';
+//var dataBaseUrl = process.env.DATABASE_URL ||  'mongodb://' + DB_USER_NAME + ':' + DB_PASSWORD + '@ds057816.mlab.com:57816/cleanshop';
+var dataBaseUrl = 'mongodb://@localhost:27017/CleanShop';
 
 var configs = require('./src/config/configuration.js')(dataBaseUrl);
 var  nav = [{
         Link: '/', Text: 'Inicio'
     },{
-        Link: '/Ofertas', Text: 'Ofertas'
+        Link: '/Ofertas', Text: 'Promociones'
     }, {
         Link: '/Precios', Text: 'Precios'
     },{
@@ -47,21 +48,23 @@ var preciosRouter = require('./src/routes/preciosRoutes')(nav,configs);
 var contactoRouter = require('./src/routes/contactoRoutes')(nav,configs);
 var adminRouter = require('./src/routes/adminRoutes')(navPanel,configs);
 var authRouter = require('./src/routes/authRoutes')(configs);
+var initRouter = require('./src/routes/initRoutes')(nav,configs);
 
 app.use('/Ofertas', ofertasRouter);
 app.use('/Precios', preciosRouter);
 app.use('/Contacto', contactoRouter);
 app.use('/Admin', adminRouter);
 app.use('/Auth', authRouter);
+app.use('/', initRouter);
 
-app.get('/', function(req,res) {
-    //res.redirect('/precios');
-    res.render('init', {
-                        // title : 'precios' ,
-                        nav: nav,
-                        // products : results
-    });
-});
+// app.get('/', function(req,res) {
+//     //res.redirect('/precios');
+//     res.render('init', {
+//                         // title : 'precios' ,
+//                         nav: nav,
+//                         // products : results
+//     });
+// });
 
 app.listen(port, function(err) {
     console.log('running server on port ' + port);

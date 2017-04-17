@@ -1,5 +1,6 @@
 var mongodb = require('mongodb').MongoClient;
 var ObjectId = require('mongodb').ObjectID;
+var $ = require('jQuery');
 
 var productController = function(navPanel,configs) {
 
@@ -8,12 +9,25 @@ var productController = function(navPanel,configs) {
         var url = configs.DataBaseUrl;
         mongodb.connect(url, function(err,db) {
                 var collection = db.collection('products');
+                var categories = db.collection('category');
                 var product = {
                     productName : req.body.productName,
-                    productPrice : req.body.productPrice
+                    productPrice : req.body.productPrice,
+                    productCategory : req.body.productCategory
                 };
+
                 collection.insert(product, function(err, results) {
-                            res.redirect('/admin/adminPrecios');
+                            if (err != null){
+
+                            }
+                            var category = {
+                                categoryName : req.body.productCategory,
+                                products : [product]
+                            };
+                            categories.insert(category, function(err, results) {
+                                res.redirect('/admin/adminPrecios');
+                            });
+
                         });
             });
     };

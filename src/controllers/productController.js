@@ -1,6 +1,6 @@
 var mongodb = require('mongodb').MongoClient;
 var ObjectId = require('mongodb').ObjectID;
-var $ = require('jQuery');
+
 
 var productController = function(navPanel,configs) {
 
@@ -22,11 +22,24 @@ var productController = function(navPanel,configs) {
                             }
                             var category = {
                                 categoryName : req.body.productCategory,
-                                products : [product]
+                                products : product
                             };
-                            categories.insert(category, function(err, results) {
-                                res.redirect('/admin/adminPrecios');
-                            });
+
+                            categories.findAndModify({
+                                            categoryName: req.body.productCategory},{categoryName:1},
+                                         {
+                                        $push: {
+                                            products : product}
+                                    },
+                                    //{new: true},   // return new doc if one is upserted
+                                    {upsert: true}, // insert the document if it does not exist
+                                    function(err, results) {
+                                    res.redirect('/admin/adminPrecios');
+                                });
+
+                            // categories.insert(category, function(err, results) {
+                               
+                            // });
 
                         });
             });

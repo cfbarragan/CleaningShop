@@ -60,7 +60,8 @@ var adminController = function(contactoService, navPanel,configs) {
                     res.render('adminPrecios', {
                         title : 'Administrar Precios' ,
                         nav: navPanel,
-                        precios : results
+                        precios : results,
+                        categorias : ['Hogar','Auto','Pileta']
                     });
                 });
             });

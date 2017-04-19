@@ -62,7 +62,7 @@
                 <div class="row">
 
                         <h2>Agregar Producto</h2>
-                        <br/>
+                        <hr>
                         <form action="/Admin/addProduct" method="post" class="form-horizontal" accept-charset="utf-8">
                             <div class="form-group ">
                                 <label class="col-sm-2 col-lg-1 control-label ">Producto</label>
@@ -72,15 +72,15 @@
                             </div>
                             <div class="form-group "> 
                                 <label class="col-sm-2  col-lg-1 control-label">Precio</label>
-                                 <div class="input-group col-sm-3 col-lg-1">
+                                 <div class="input-group col-sm-3 col-lg-2">
                                     <span class="input-group-addon">$</span>
                                     <input id="productPrice" class="form-control" name="productPrice" placeholder="Ingrese precio" type="number" step="any" value="" maxlength="50">
                                 </div>
                             </div>
                             <div class="form-group "> 
                                 <label class="col-sm-2  col-lg-1 control-label">Categoria</label>
-                                 <div class="input-group col-sm-3 col-lg-1">
-                                    <input id="productCategory" class="form-control" name="productCategory" placeholder="Seleccione una categoria" step="any" value="" maxlength="50">
+                                <div class="input-group col-sm-8">
+                                    <input id="productCategory" class="form-control" name="productCategory" placeholder="Seleccione una categoria" type="text" value="" maxlength="50">
                                 </div>
                             </div>
                             <div class="form-group">
@@ -93,7 +93,7 @@
                 </div>
                 <div class="row">
                 <h2>Productos en el sistema</h2>
-                <br/>
+                <hr>
                 <div class="panel panel-default">
                     <!-- Default panel contents -->
                     <div class="panel-heading">Productos</div>
@@ -116,7 +116,7 @@
                                     <td><span>$ </span><%=precios[i].productPrice%></td> 
                                     <td>
                                         <div class="row">
-                                            <div class="col-lg-3 col-md-2 col-sm-3 pull-left">
+                                            <div class="col-lg-12 col-md-12 col-sm-12 pull-left">
                                                 <a class="btn btn-default" href="product/edit/<%=precios[i]._id%>">Editar</a>
                                                 <button type="button" id="<%=precios[i]._id%>" class="btn btn-danger" data-toggle="modal" data-prodname="<%=precios[i].productName%>" data-id="<%=precios[i]._id%>" data-target="#myModal"> Eliminar
                                                 </button>

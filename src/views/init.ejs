@@ -56,23 +56,23 @@
         <!-- /.container -->
     </nav>
      <!-- Page Content -->
-    <div class="container">
-            <header class="jumbotron">
-                <h1>Bienvenidos a LS Limpieza!</h1>
-                <p>Productos de limpieza sueltos. Desde la limpieza para el hogar hasta la limpieza para el auto. Consulta por los productos para cuidar tu pileta.
-                </p>
-                <p>Consulta nuestra <a href="/precios">Lista de Precios </a> y aprovecha nuestras <a href="/ofertas">Promociones</a></p>
-                <!--<p><a class="btn btn-primary btn-large">Call to action!</a>
-                </p>-->
-            </header>
+<div class="container">
+    <header class="jumbotron">
+        <h1>Bienvenidos a LS Limpieza!</h1>
+        <p>Productos de limpieza sueltos. Desde la limpieza para el hogar hasta la limpieza para el auto. Consulta por los productos para cuidar tu pileta.
+        </p>
+        <p>Consulta nuestra <a href="/precios">Lista de Precios </a> y aprovecha nuestras <a href="/ofertas">Promociones</a></p>
+        <!--<p><a class="btn btn-primary btn-large">Call to action!</a>
+        </p>-->
+    </header>
         
-        <div class="row">
-            <div class="col-lg-12">
-                <h2>Últimas Promociones</h3>
-            </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <h2>Últimas Promociones</h3>
         </div>
-        <hr>
-        <div class="row">
+    </div>
+    <hr>
+    <div class="row">
          <% for(var i=0; i<ofertas.length; i++){%>
        
         <div class="col-md-3 col-sm-12 hero-feature wrapper">
@@ -83,67 +83,20 @@
                     <div class='trial'>Solo esta semana</div>
                     <hr>
                     <p><%=ofertas[i].offerDesc%></p>
-                
                 </div>
             </div>
         </div>
         <%}%>   
-        <!--<div class="col-md-3 col-sm-6 hero-feature wrapper">
-            <div class="package">
-                <div class="caption">
-                    <div class='name'>Limited</div>
-                    <div class='price'>€2</div>
-                    <div class='trial'>Available for a month</div>
-                    <hr>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                
-                </div>
+     </div>
+     <hr>
+
+    <footer id="footer-bottom">
+        <div class="row text-center">
+            <div class="col-lg-12">
+                <p>LS Limpieza - 124 Bis n°674, El Dique - (0221) 66587453 - LSLimpieza@gmail.com</p>
             </div>
         </div>
-
-        <div class="col-md-3 col-sm-6 hero-feature wrapper">
-            <div class="package">
-                <div class="caption">
-                    <div class='name'>Limited</div>
-                    <div class='price'>€2</div>
-                    <div class='trial'>Available for a month</div>
-                    <hr>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-3 col-sm-6 hero-feature wrapper">
-            <div class="package">
-                <div class="caption">
-                    <div class='name'>Limited</div>
-                    <div class='price'>€2</div>
-                    <div class='trial'>Available for a month</div>
-                    <hr>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                
-                </div>
-            </div>
-        </div>-->
-
-        
+    </footer>
 </div>
-
-<hr>
-
-        <footer id="footer-bottom">
-            <div class="row text-center">
-                <div class="col-lg-12">
-                    <p>LS Limpieza - 124 Bis n°674, El Dique - (0221) 66587453 - LSLimpieza@gmail.com</p>
-                </div>
-            </div>
-        </footer>
-
-</div>
-    
-
-    <!-- Footer -->
-  
-    </body>
+</body>
 </html>

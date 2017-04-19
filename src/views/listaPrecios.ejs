@@ -55,5 +55,44 @@
             </div>
             <!-- /.container -->
         </nav>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h2 class="text-center">Estos son nuestros Precios</h3>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-lg-10 col-lg-offset-1">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th><h3>Producto</h3></th> 
+                                <th ><h3 class="pull-right">Precio</h3></th> 
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% for(var i=0; i<products.length; i++){%>
+                            <tr>
+                                <td><%=products[i].productName%></td>    
+                               
+                                <td><div  class="pull-right"><strong><span>$ </span> <%=products[i].productPrice%><strong></div></td> 
+
+                            </tr>
+                            <%}%> 
+                        </tbody>
+                    </table>
+                </div>
+            </div> 
+            <hr>
+            <footer id="footer-bottom">
+                <div class="row text-center">
+                    <div class="col-lg-12">
+                        <p>LS Limpieza - 124 Bis n°674, El Dique - (0221) 66587453 - LSLimpieza@gmail.com</p>
+                    </div>
+                </div>
+            </footer>
+        </div>
+        
     </body>
 </html>

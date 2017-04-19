@@ -38,7 +38,6 @@ var productController = function(navPanel,configs) {
                                 });
 
                             // categories.insert(category, function(err, results) {
-                               
                             // });
 
                         });

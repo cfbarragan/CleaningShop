@@ -4,6 +4,7 @@ module.exports = function(app,configs) {
     app.use(passport.initialize());
     app.use(passport.session());
 
+    require('./strategies/local.strategy')(configs);
     passport.serializeUser(function(user, done) {
         done(null, user);
     });
@@ -11,6 +12,4 @@ module.exports = function(app,configs) {
     passport.deserializeUser(function(user, done) {
         done(null, user);
     });
-
-    require('./strategies/local.strategy')(configs);
 };

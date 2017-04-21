@@ -4,7 +4,7 @@ var ObjectId = require('mongodb').ObjectID;
 var adminController = function(contactoService, navPanel,configs) {
     var middleware = function(req,res,next) {
         if (!req.user) {
-            res.redirect('/login');
+            res.render('/login', {message : req.session.messages});
         }
         next();
     };

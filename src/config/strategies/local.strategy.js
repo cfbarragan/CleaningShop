@@ -7,21 +7,25 @@ module.exports = function(configs) {
         usernameField:'username',
         passwordField:'userpassword'
     },
+    /*Verification function*/
     function(username, password, done) {
         var url = configs.DataBaseUrl;
         mongodb.connect(url, function(err,db) {
                 var collection = db.collection('users');
                 collection.findOne({
                     username: username}, function(err, results) {
+                        if (err) {
+                            return done(err);
+                        }
                         if (results != null) {
                             if (results.userpassword === password) {
                                 var user = results;
-                                done(null,user);
+                                return done(null,user);
                             } else {
-                                done(null,false, {message : 'Usuario o contraseña incorrectos'});
+                                return done(null,false, {message : 'Usuario o contraseña incorrectos'});
                             }
                         }else {
-                            done(null, false, {message : 'Usuario o contraseña incorrectos'});
+                            return done(null, false, {message : 'Usuario o contraseña incorrectos'});
                         }
                     });
             });

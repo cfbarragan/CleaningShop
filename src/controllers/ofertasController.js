@@ -14,10 +14,10 @@ var ofertasController = function(ofertasService,nav,configs) {
             mongodb.connect(url, function(err,db) {
                 var collection = db.collection('offers');
                 collection.find({}).toArray(function(err, results) {
-                    res.render('index', {
-                        title : 'Ofertas' ,
+                    res.render('listaPromos', {
+                        title : 'Promociones' ,
                         nav: nav,
-                        offers : results
+                        ofertas : results
                     });
                 });
             });

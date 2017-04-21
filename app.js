@@ -3,13 +3,11 @@ var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
 var passport = require('passport');
 var session = require('express-session');
-var DB_USER_NAME =  'cleanGenUser';
-var DB_PASSWORD = 'jime150187';
 var app = express();
 
 var port = process.env.PORT || 5000;
-//var dataBaseUrl = process.env.DATABASE_URL ||  'mongodb://' + DB_USER_NAME + ':' + DB_PASSWORD + '@ds057816.mlab.com:57816/cleanshop';
-var dataBaseUrl = 'mongodb://@localhost:27017/CleanShop';
+var dataBaseUrl = process.env.DATABASE_URL ;
+//var dataBaseUrl = 'mongodb://@localhost:27017/CleanShop';
 
 var configs = require('./src/config/configuration.js')(dataBaseUrl);
 var  nav = [{
@@ -56,15 +54,6 @@ app.use('/Contacto', contactoRouter);
 app.use('/Admin', adminRouter);
 app.use('/Auth', authRouter);
 app.use('/', initRouter);
-
-// app.get('/', function(req,res) {
-//     //res.redirect('/precios');
-//     res.render('init', {
-//                         // title : 'precios' ,
-//                         nav: nav,
-//                         // products : results
-//     });
-// });
 
 app.listen(port, function(err) {
     console.log('running server on port ' + port);

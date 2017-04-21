@@ -56,14 +56,26 @@
             <!-- /.container -->
         </nav>
         <div class="container">
-          <!--  <div class="row">
+            <div class="row">
                 <div class="col-lg-12">
-                    <h2 class="text-center">Ponete en Contacto</h3>
+                    <h3 class="text-center">Aprovecha nuestras Promociones</h3>
                 </div>
             </div>
             <hr>
             <div class="row">
-              
+                <% for(var i=0; i<ofertas.length; i++){%>
+                 <div class="col-md-3 col-sm-12 hero-feature wrapper">
+                    <div class="package">
+                        <div class="caption">
+                            <div class='name'><%=ofertas[i].offerName%></div>
+                            <div class='price'><%=ofertas[i].offerPrice%></div>
+                            <div class='trial'>Solo esta semana</div>
+                            <hr>
+                            <p><%=ofertas[i].offerDesc%></p>
+                        </div>
+                    </div>
+                </div>
+                <%}%>   
             </div> 
             <hr>
             <footer id="footer-bottom">
@@ -73,56 +85,7 @@
                     </div>
                 </div>
             </footer>
-        </div>-->
+        </div>
         
-	<div class="row">
-        <div class="col-md-12 one-column-text">
-           <h3 class="text-center">Ponete en Contacto</h3>
-        </div>
-    </div>
-    <hr>
-    <div class="row">
-        <div class="col-md-6">
-            <h4>Encontranos acá</h4>
-        </div>
-    </div>
-    <div class="row">
-    <div class="col-lg-12 col-md-12 col-sm-12">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1338.0299036724891!2d-57.93869487995258!3d-34.896123418805345!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95a2e6680deff023%3A0xe94f5fa887a46969!2sCalle+124+Bis+700%2C+Ensenada%2C+Buenos+Aires!5e1!3m2!1ses!2sar!4v1492783454000" width="100%" height="350" frameborder="0" style="border:2px solid #39aecf" wmode="Opaque">
-    </iframe>
-</div>
-</div>
-<br>
-<div class="row">
-        <div class="col-md-6">
-            <h4>Información</h4>
-        </div>
-    </div>
-    <hr>
-    <div class="row contact-info">
-                <div class=" col-lg-4 col-sm-2 pull-left">
-                    <span>Teléfono</span>
-                    <p>Argentina: +54 221 12345648</p>
-                </div>
-                <div class=" col-lg-4 col-sm-2  pull-center">
-                    <span>Email</span>
-                    <p>notificaciones@legalprom.com</p>
-                </div>
-                <div class=" col-lg-4 col-sm-2 pull-right">
-                    <span>Redes Sociales</span>
-                    <p>Facebook: <a href="#">/legalprom</a></p>
-                </div>
-        </div>
-        <br>
-         <hr>
-       <footer id="footer-bottom">
-                <div class="row text-center">
-                    <div class="col-lg-12">
-                        <p>LS Limpieza - 124 Bis n°674, El Dique - (0221) 66587453 - LSLimpieza@gmail.com</p>
-                    </div>
-                </div>
-            </footer>
-    </div>
-
     </body>
 </html>

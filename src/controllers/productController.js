@@ -5,7 +5,6 @@ var ObjectId = require('mongodb').ObjectID;
 var productController = function(navPanel,configs) {
 
     var addProduct = function(req,res) {
-        console.log(req.body);
         var url = configs.DataBaseUrl;
         mongodb.connect(url, function(err,db) {
                 var collection = db.collection('products');
@@ -47,7 +46,6 @@ var productController = function(navPanel,configs) {
                 collection.findOne({_id:id},
                     function(err, results) {
                         if (results != null) {
-                            console.log(results);
                             var product = {
                                 id: id,
                                 productName : results.productName,

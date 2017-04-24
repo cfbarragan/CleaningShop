@@ -2,30 +2,23 @@ var express = require('express');
 var authRouter = express.Router();
 var mongodb = require('mongodb').MongoClient;
 var passport = require('passport');
+var flash = require('connect-flash');
 var configs = require('../config/configuration.js')();
 
-var router = function() {
+var router = function(nav) {
     authRouter.route('/login')
     .get(function(req,res) {
-        var algo = res;
-        res.render('login', {message : req.session.message});
+        res.render('login',
+            {
+                message : req.flash('error'),
+                nav : nav
+            });
     })
     .post(passport.authenticate('local', {
-        failureRedirect : '/auth/login',
+        failureRedirect : '/auth/login', failureFlash: true
     }), function(err,res) {
         res.redirect('/admin/panel');
     });
-//    .post(function(req,res,next) {
-//         passport.authenticate('local',{session : false}, function(err, user, info) {
-//                 if (err) { return next(err); }
-//                 if (!user) { return res.redirect('/login'); }
-//                 req.logIn(user, function(err) {
-//                     if (err) {return next(err);}
-//                     return res.redirect('/admin/panel');
-//                 }) (req, res, next);
-//             });
-//     });
-
     return authRouter;
 };
 

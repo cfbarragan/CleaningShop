@@ -3,11 +3,12 @@ var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
 var passport = require('passport');
 var session = require('express-session');
+var flash = require('connect-flash');
 var app = express();
 
 var port = process.env.PORT || 5000;
-var dataBaseUrl = process.env.DATABASE_URL ;
-//var dataBaseUrl = 'mongodb://@localhost:27017/CleanShop';
+//var dataBaseUrl = process.env.DATABASE_URL ;
+var dataBaseUrl = 'mongodb://@localhost:27017/CleanShop';
 
 var configs = require('./src/config/configuration.js')(dataBaseUrl);
 var  nav = [{
@@ -24,7 +25,7 @@ var  navPanel = [{
     }, {
         Link: '/admin/adminOfertas', Text: 'Promociones'
     },{
-        Link: '/admin/adminConfig', Text: 'Configuraciones'}];
+        Link: '/admin', Text: 'Configuraciones'}];
 
 app.use(express.static('public'));
 app.use(bodyParser.json());
@@ -35,6 +36,7 @@ app.use(session({
     resave: true,
     saveUninitialized: true
 }));
+app.use(flash());
 
 require('./src/config/passport')(app,configs);
 app.set('views', './src/views');
@@ -45,7 +47,7 @@ var ofertasRouter = require('./src/routes/ofertasRoutes')(nav,configs);
 var preciosRouter = require('./src/routes/preciosRoutes')(nav,configs);
 var contactoRouter = require('./src/routes/contactoRoutes')(nav,configs);
 var adminRouter = require('./src/routes/adminRoutes')(navPanel,configs);
-var authRouter = require('./src/routes/authRoutes')(configs);
+var authRouter = require('./src/routes/authRoutes')(nav);
 var initRouter = require('./src/routes/initRoutes')(nav,configs);
 
 app.use('/Ofertas', ofertasRouter);

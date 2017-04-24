@@ -3,12 +3,6 @@ var ObjectId = require('mongodb').ObjectID;
 var viewName = 'listaPrecios';
 
 var preciosController = function(preciosService, nav,configs) {
-    var middleware = function(req,res,next) {
-        // if (!req.user) {
-        //     res.redirect('/');
-        // }
-        next();
-    };
     var getIndex = function(req,res) {
             var url = configs.DataBaseUrl;
             mongodb.connect(url, function(err,db) {
@@ -25,8 +19,6 @@ var preciosController = function(preciosService, nav,configs) {
 
     return {
         getIndex: getIndex,
-        // getById: getById,
-        // middleware : middleware
     };
 };
 

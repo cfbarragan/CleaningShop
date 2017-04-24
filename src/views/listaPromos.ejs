@@ -63,6 +63,11 @@
             </div>
             <hr>
             <div class="row">
+             <% if (ofertas.length == 0) {%>
+                <div class="col-lg-10 col-lg-offset-1 text-center">
+                <div class="alert alert-info" role="alert"><h4>Por el momento no hay promociones cargadas</h4></div>
+                </div>
+            <% } else { %>
                 <% for(var i=0; i<ofertas.length; i++){%>
                  <div class="col-md-3 col-sm-12 hero-feature wrapper">
                     <div class="package">
@@ -76,6 +81,7 @@
                     </div>
                 </div>
                 <%}%>   
+            <%}%>   
             </div> 
             <hr>
             <footer id="footer-bottom">

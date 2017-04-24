@@ -63,6 +63,11 @@
             </div>
             <hr>
             <div class="row">
+            <% if (products.length == 0) {%>
+                <div class="col-lg-10 col-lg-offset-1 text-center">
+                <div class="alert alert-info" role="alert"><h4>Por el momento no hay precios cargados</h4></div>
+                </div>
+            <% } else { %>
                 <div class="col-lg-10 col-lg-offset-1">
                     <table class="table table-striped">
                         <thead>
@@ -81,6 +86,7 @@
                         </tbody>
                     </table>
                 </div>
+            <%}%> 
             </div> 
             <hr>
             <footer id="footer-bottom">

@@ -22,10 +22,10 @@ module.exports = function(configs) {
                                 var user = results;
                                 return done(null,user);
                             } else {
-                                return done(null,false, {message : 'Usuario o contraseña incorrecto'});
+                                return done(null,false, {message : 'Usuario o contraseña incorrectos'});
                             }
                         }else {
-                            return done(null, false, {message : 'Usuario o contraseña incorrecto'});
+                            return done(null, false, {message : 'Usuario o contraseña incorrectos'});
                         }
                     });
             });

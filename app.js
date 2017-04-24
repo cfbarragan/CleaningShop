@@ -22,9 +22,9 @@ var  nav = [{
 var  navPanel = [{
         Link: '/admin/adminPrecios', Text: 'Precios'
     }, {
-        Link: '/admin/adminOfertas', Text: 'Ofertas'
-    },{
-        Link: '/admin/adminConfig', Text: 'Configuraciones'}];
+        Link: '/admin/adminOfertas', Text: 'Promociones'
+    },/*{
+        Link: '/admin/adminConfig', Text: 'Configuraciones'}*/];
 
 app.use(express.static('public'));
 app.use(bodyParser.json());

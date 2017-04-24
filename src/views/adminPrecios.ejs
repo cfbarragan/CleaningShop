@@ -11,21 +11,11 @@
 
     <title><%=title%></title>
 
-        <!-- bower:js -->
-        <script src="/lib/jquery/dist/jquery.js"></script>
-        <script src="/lib/bootstrap/dist/js/bootstrap.js"></script>
-        <script src="/lib/jquery.sticky/jquery.sticky.js"></script>
-        <!-- endbower -->   
-    <!-- inject:css -->
-    <link rel="stylesheet" href="/css/animate.min.css">
-    <link rel="stylesheet" href="/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/css/main.css">
-    <link rel="stylesheet" href="/css/owl.carousel.css">
-    <link rel="stylesheet" href="/css/responsive.css">
-    <link rel="stylesheet" href="/css/signin.css">
-    <link rel="stylesheet" href="/css/simple-sidebar.css">
-    <!-- endinject -->
+    <script src="/lib/jquery/dist/jquery.js"></script>
+    <script src="/lib/bootstrap/dist/js/bootstrap.js"></script>
 
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/sidebar.css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -38,29 +28,37 @@
 
 <body>
 
-    <div id="wrapper">
+   
 
         <!-- Sidebar -->
-        <div id="sidebar-wrapper">
-            <ul class="sidebar-nav">
-                <li class="sidebar-brand">
-                      <a href="/admin/panel">
-                        Admin Panel
-                    </a>
-                </li>
+       <nav class="navbar navbar-inverse sidebar" role="navigation">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-sidebar-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Admin Panel</a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-sidebar-navbar-collapse-1">
+                <ul class="nav navbar-nav">
                 <% for(var i=0; i<nav.length; i++){%>
-                    <li>
-                    <a href="<%=nav[i].Link%>"><%=nav[i].Text%></a></li>
+                                        <li>
+                                        <a href="<%=nav[i].Link%>"><%=nav[i].Text%></a></li>
                 <%}%>
-            </ul>
+                </ul>
+            </div>
         </div>
-        <!-- /#sidebar-wrapper -->
+    </nav>  
 
         <!-- Page Content -->
-        <div id="page-content-wrapper">
-            <div class="container-fluid">
-                <div class="row">
 
+            <div class="container pull-left">
+                <div class="row col-lg-offset-1 col-lg-12" >
                         <h2>Agregar Producto</h2>
                         <hr>
                         <form action="/Admin/addProduct" method="post" class="form-horizontal" accept-charset="utf-8">
@@ -71,7 +69,7 @@
                                 </div>
                             </div>
                             <div class="form-group "> 
-                                <label class="col-sm-2  col-lg-1 control-label">Precio</label>
+                                <label class="col-sm-2 col-lg-1 control-label">Precio</label>
                                  <div class="input-group col-sm-3 col-lg-2">
                                     <span class="input-group-addon">$</span>
                                     <input id="productPrice" class="form-control" name="productPrice" placeholder="Ingrese precio" type="number" step="any" value="" maxlength="50">
@@ -91,7 +89,7 @@
                             </div>
                         </form>
                 </div>
-                <div class="row">
+                <div class="row col-lg-offset-1 col-lg-12">
                 <h2>Productos en el sistema</h2>
                 <hr>
             
@@ -135,10 +133,9 @@
                     </div>
                 </div>
             </div>
-        </div>
         <!-- /#page-content-wrapper -->
 
-    </div>
+
     <!-- /#wrapper -->
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog">
         <div class="modal-dialog" role="document">

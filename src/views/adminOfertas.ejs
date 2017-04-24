@@ -11,20 +11,12 @@
 
     <title><%=title%></title>
 
-        <!-- bower:js -->
-        <script src="/lib/jquery/dist/jquery.js"></script>
-        <script src="/lib/bootstrap/dist/js/bootstrap.js"></script>
-        <script src="/lib/jquery.sticky/jquery.sticky.js"></script>
-        <!-- endbower -->   
-    <!-- inject:css -->
-    <link rel="stylesheet" href="/css/animate.min.css">
+    <script src="/lib/jquery/dist/jquery.js"></script>
+    <script src="/lib/bootstrap/dist/js/bootstrap.js"></script>
+
     <link rel="stylesheet" href="/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/css/main.css">
-    <link rel="stylesheet" href="/css/owl.carousel.css">
-    <link rel="stylesheet" href="/css/responsive.css">
-    <link rel="stylesheet" href="/css/signin.css">
-    <link rel="stylesheet" href="/css/simple-sidebar.css">
-    <!-- endinject -->
+    <link rel="stylesheet" href="/css/sidebar.css">
+
 
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -38,30 +30,37 @@
 
 <body>
 
-    <div id="wrapper">
+   
 
-        <!-- Sidebar -->
-        <div id="sidebar-wrapper">
-            <ul class="sidebar-nav">
-                <li class="sidebar-brand">
-                      <a href="/admin/panel">
-                        Admin Panel
-                    </a>
-                </li>
-                <% for(var i=0; i<nav.length; i++){%>
-                    <li>
-                    <a href="<%=nav[i].Link%>"><%=nav[i].Text%></a></li>
-                <%}%>
-            </ul>
-        </div>
-        <!-- /#sidebar-wrapper -->
-
-        <!-- Page Content -->
-        <div id="page-content-wrapper">
+          <!-- Sidebar -->
+       <nav class="navbar navbar-inverse sidebar" role="navigation">
             <div class="container-fluid">
-                <div class="row">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-sidebar-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">Admin Panel</a>
+                </div>
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-sidebar-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                    <% for(var i=0; i<nav.length; i++){%>
+                                            <li>
+                                            <a href="<%=nav[i].Link%>"><%=nav[i].Text%></a></li>
+                    <%}%>
+                    </ul>
+                </div>
+            </div>
+        </nav>  
 
-                        <h2>Agregar Oferta</h2>
+        <div class="container pull-left">
+                <div class="row col-lg-offset-1 col-md-offset-1 col-lg-12">
+
+                        <h2>Agregar Promocion</h2>
                         <br>
                         <form action="/Admin/addOffer" method="post" class="form-horizontal" accept-charset="utf-8">
                             <div class="form-group ">
@@ -97,12 +96,12 @@
                             </div>
                         </form>
                 </div>
-                <div class="row">
-                <h2>Productos en el sistema</h2>
-                <br/>
+                <div class="row col-lg-offset-1 col-md-offset-1 col-lg-12 ">
+                <h2>Promociones cargadas</h2>
+                <br>
                 <div class="panel panel-default">
                     <!-- Default panel contents -->
-                    <div class="panel-heading">Productos</div>
+                    <!--<div class="panel-heading">Promociones</div>-->
 
                     <!-- Table -->
                         <table class="table">
@@ -137,13 +136,8 @@
                             </tbody>
                         </table>
                     </div>
-                </div>
             </div>
-        </div>
-        <!-- /#page-content-wrapper -->
 
-    </div>
-    <!-- /#wrapper -->
     <div class="modal fade" id="myModalOffers" tabindex="-1" role="dialog">
         <div class="modal-dialog" role="document">
             <div class="modal-content">

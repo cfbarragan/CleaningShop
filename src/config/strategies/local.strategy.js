@@ -1,5 +1,6 @@
 var passport = require('passport'),
     LocalStrategy = require('passport-local').Strategy,
+    passwordHash = require('password-hash'),
     mongodb = require('mongodb').MongoClient;
 
 module.exports = function(configs) {
@@ -18,7 +19,8 @@ module.exports = function(configs) {
                             return done(err);
                         }
                         if (results != null) {
-                            if (results.userpassword === password) {
+                            var verify = passwordHash.verify(password, results.userpassword);
+                            if (verify) {
                                 var user = results;
                                 return done(null,user);
                             } else {

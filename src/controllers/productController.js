@@ -9,12 +9,13 @@ var productController = function(navPanel,configs) {
         mongodb.connect(url, function(err,db) {
                 var collection = db.collection('products');
                 var categories = db.collection('category');
+                var tags = req.body.productTags.substring(0, req.body.productTags.length - 2);
+                var cat = tags.split(',');
                 var product = {
                     productName : req.body.productName,
                     productPrice : req.body.productPrice,
-                    productCategory : req.body.productCategory
+                    productCategory : cat
                 };
-
                 collection.insert(product, function(err, results) {
                             if (err != null){
 
@@ -23,17 +24,33 @@ var productController = function(navPanel,configs) {
                                 categoryName : req.body.productCategory,
                                 products : product
                             };
-
-                            categories.findAndModify({
-                                            categoryName: req.body.productCategory},{categoryName:1},
+                            var cant = cat.length;
+                            var i = 0;
+                            for (var index = 0; index < cant; index++) {
+                                categories.findAndModify({
+                                            categoryName: cat[index]},{categoryName:1},
                                          {
                                         $push: {
                                             products : product}
                                     },
                                     {upsert: true}, // insert the document if it does not exist
                                     function(err, results) {
+                                        i++;
+                                        if (i == cant){
                                     res.redirect('/admin/adminPrecios');
+                                }
                                 });
+                            }
+                            // categories.findAndModify({
+                            //                 categoryName: req.body.productCategory},{categoryName:1},
+                            //              {
+                            //             $push: {
+                            //                 products : product}
+                            //         },
+                            //         {upsert: true}, // insert the document if it does not exist
+                            //         function(err, results) {
+                            //         res.redirect('/admin/adminPrecios');
+                            //     });
                         });
             });
     };
@@ -68,7 +85,7 @@ var productController = function(navPanel,configs) {
             mongodb.connect(url, function(err,db) {
                 var collection = db.collection('products');
                 var categories = db.collection('category');
-                collection.updateOne(
+                collection.updateMany(
                     {_id:id},
                     {
                         $set:
@@ -80,7 +97,7 @@ var productController = function(navPanel,configs) {
                         if (err != null) {
                             console.log(err);
                         }else {
-                            categories.update(
+                            categories.updateMany(
                                 {'products._id': id},
                                     {'$set': {
                                         'products.$.productPrice' : price
@@ -104,7 +121,7 @@ var productController = function(navPanel,configs) {
                         if (err != null) {
                             res.redirect('/admin/adminPrecios');
                         }else {
-                            categories.update(
+                            categories.updateMany(
                                 {'products._id': id},
                                     {'$pull': {
                                         'products' :{'_id': id}

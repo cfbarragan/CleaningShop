@@ -56,14 +56,23 @@ var adminController = function(contactoService, navPanel,configs) {
             var url = configs.DataBaseUrl;
             mongodb.connect(url, function(err,db) {
                 var collection = db.collection('products');
-                collection.find({}).toArray(function(err, results) {
-                    res.render('adminPrecios', {
-                        title : 'Administrar Precios' ,
-                        nav: navPanel,
-                        precios : results,
-                        categorias : ['Hogar','Auto','Pileta']
+                var categories = db.collection('category');
+
+                categories.find({},{'_id' : 0, 'categoryName' : 1}).toArray(function(err, cats){
+                        var finalCat = [];
+                        cats.forEach(function(element) {
+                            finalCat.push(element.categoryName.toString());
+                        }, this);
+
+                        collection.find({}).toArray(function(err, results) {
+                            res.render('adminPrecios', {
+                                title : 'Administrar Precios' ,
+                                nav: navPanel,
+                                precios : results,
+                                categorias : finalCat
+                            });
+                        });
                     });
-                });
             });
         };
 

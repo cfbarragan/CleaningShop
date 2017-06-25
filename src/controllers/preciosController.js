@@ -18,7 +18,8 @@ var preciosController = function(preciosService, nav,configs) {
                             title : 'precios' ,
                             nav: nav,
                             products : results,
-                            categorias : finalCat
+                            categorias : finalCat,
+                            filter: false
                         });
                     });
                 });
@@ -27,7 +28,19 @@ var preciosController = function(preciosService, nav,configs) {
 
     var filterByCategory = function(req, res){
         var url = configs.DataBaseUrl;
+        var categoryToFilter = req.params.category;
+        mongodb.connect(url, function(err,db) {
+            var categories = db.collection('category');
+            categories.find({categoryName: categoryToFilter, $where : 'this.products.length> 0'}).toArray(function(err, result) {
+                res.render(viewName, {
+                            title : 'precios' ,
+                            nav: nav,
+                            products : result[0].products,
+                            categorias : [categoryToFilter],
+                            filter : true});
 
+            });
+        });
     };
 
     return {

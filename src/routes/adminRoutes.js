@@ -9,7 +9,7 @@ var router = function(nav,configs) {
     var productController = require('../controllers/productController')(nav,configs);
     var offerController = require('../controllers/offerController')(nav,configs);
     var authController = require('../controllers/authController')();
-    //adminRouter.use(authController.middleware);
+    adminRouter.use(authController.middleware);
 
     adminRouter.route('/')
      .get(adminController.getPanel);

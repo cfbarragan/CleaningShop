@@ -72,8 +72,9 @@
                 <div class="panel panel-default">
                      <div class="panel-heading">Filtrar por: 
                         <% for(var i=0; i<categorias.length; i++){%>
-                            <a href="#"><%=categorias[i]%></a> | 
-                         <%}%> 
+                            <a href="/precios/<%=categorias[i]%>"><%=categorias[i]%></a> | 
+                         <%}%>
+                         <a href="/precios">Todos</a> 
                     </div>
                     <table class="table table-striped">
                         <thead>

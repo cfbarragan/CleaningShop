@@ -26,6 +26,7 @@ var productController = function(navPanel,configs) {
                             };
                             var cant = cat.length;
                             var i = 0;
+                            var errors = [];
                             for (var index = 0; index < cant; index++) {
                                 categories.findAndModify({
                                             categoryName: cat[index]},{categoryName:1},
@@ -35,22 +36,15 @@ var productController = function(navPanel,configs) {
                                     },
                                     {upsert: true}, // insert the document if it does not exist
                                     function(err, results) {
+                                        if (err){
+                                            errors.push(err);
+                                        }
                                         i++;
                                         if (i == cant){
-                                    res.redirect('/admin/adminPrecios');
-                                }
-                                });
+                                            res.redirect('/admin/adminPrecios');
+                                        }
+                                    });
                             }
-                            // categories.findAndModify({
-                            //                 categoryName: req.body.productCategory},{categoryName:1},
-                            //              {
-                            //             $push: {
-                            //                 products : product}
-                            //         },
-                            //         {upsert: true}, // insert the document if it does not exist
-                            //         function(err, results) {
-                            //         res.redirect('/admin/adminPrecios');
-                            //     });
                         });
             });
     };
@@ -95,7 +89,7 @@ var productController = function(navPanel,configs) {
                     },
                     function(err, results) {
                         if (err != null) {
-                            console.log(err);
+
                         }else {
                             categories.updateMany(
                                 {'products._id': id},

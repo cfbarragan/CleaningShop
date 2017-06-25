@@ -69,11 +69,17 @@
                 </div>
             <% } else { %>
                 <div class="col-lg-10 col-lg-offset-1">
+                <div class="panel panel-default">
+                     <div class="panel-heading">Filtrar por: 
+                        <% for(var i=0; i<categorias.length; i++){%>
+                            <a href="#"><%=categorias[i]%></a> | 
+                         <%}%> 
+                    </div>
                     <table class="table table-striped">
                         <thead>
                             <tr>
-                                <th><h3>Producto</h3></th> 
-                                <th ><h3 class="pull-right">Precio</h3></th> 
+                                <th><h4>Producto</h4></th> 
+                                <th ><h4 class="pull-right">Precio</h4></th> 
                             </tr>
                         </thead>
                         <tbody>
@@ -85,6 +91,7 @@
                             <%}%> 
                         </tbody>
                     </table>
+                </div>
                 </div>
             <%}%> 
             </div> 
@@ -99,4 +106,7 @@
         </div>
         
     </body>
+    <script>
+
+    </script>
 </html>

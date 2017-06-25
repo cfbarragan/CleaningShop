@@ -4,15 +4,14 @@ var mongodb = require('mongodb').MongoClient;
 var ObjectId = require('mongodb').ObjectID;
 
 var router = function(nav,config) {
-    //var bookService = require('../services/goodreadsService')();
-    var ofertasController = require('../controllers/preciosController')(null, nav,config);
 
-    //ofertasRouter.use(bookController.middleware);
+    var preciosController = require('../controllers/preciosController')(null, nav,config);
+
     preciossRouter.route('/')
-        .get(ofertasController.getIndex);
+        .get(preciosController.getIndex);
 
-    // ofertasRouter.route('/:id')
-    //    .get(bookController.getById);
+    preciossRouter.route('/:category')
+       .get(preciosController.filterByCategory);
 
     return preciossRouter;
 };

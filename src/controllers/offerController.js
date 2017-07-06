@@ -10,7 +10,8 @@ var offerController = function(navPanel,configs) {
                 var offer = {
                     offerName : req.body.offerName,
                     offerPrice : req.body.offerPrice,
-                    offerDesc: req.body.offerDesc
+                    offerDesc: req.body.offerDesc,
+                    offerAvailability : req.body.offerAvailability
                 };
                 collection.insert(offer, function(err, results) {
                             res.redirect('/admin/adminOfertas');
@@ -26,12 +27,13 @@ var offerController = function(navPanel,configs) {
                 collection.findOne({_id:id},
                     function(err, results) {
                         if (results != null) {
-                            console.log(results);
+                            var availability = (results.offerAvailability != null) ? results.offerAvailability : 'Solo por esta semana';
                             var offer = {
                                 id : id,
                                 offerName : results.offerName,
                                 offerPrice : results.offerPrice,
-                                offerDesc : results.offerDesc
+                                offerDesc : results.offerDesc,
+                                offerAvailability : availability
                             };
                             res.render('offer', {
                                     title: 'Editar Promoción',
@@ -64,6 +66,7 @@ var offerController = function(navPanel,configs) {
         var url = configs.DataBaseUrl;
         var desc = req.body.offerDesc;
         var price = req.body.offerPrice;
+        var availability = req.body.offerAvailability;
         mongodb.connect(url, function(err,db) {
             var collection = db.collection('offers');
             collection.updateOne(
@@ -72,7 +75,8 @@ var offerController = function(navPanel,configs) {
                     $set :
                     {
                         'offerDesc' : desc,
-                        'offerPrice' : price
+                        'offerPrice' : price,
+                        'offerAvailability' : availability
                     }
                 }, function(err, result) {
                     if (err != null) {

@@ -7,8 +7,8 @@ var flash = require('connect-flash');
 var app = express();
 
 var port = process.env.PORT || 5000;
-//var dataBaseUrl = process.env.DATABASE_URL ;
-var dataBaseUrl = 'mongodb://@localhost:27017/CleanShop';
+var dataBaseUrl = process.env.DATABASE_URL ;
+//var dataBaseUrl = 'mongodb://@localhost:27017/CleanShop';
 
 var configs = require('./src/config/configuration.js')(dataBaseUrl);
 var  nav = [{
@@ -58,6 +58,5 @@ app.use('/Auth', authRouter);
 app.use('/', initRouter);
 
 app.listen(port, function(err) {
-    console.log('running server on port ' + port);
-    console.log(dataBaseUrl);
+    console.log('Site running');
 });

@@ -70,12 +70,19 @@
             <% } else { %>
                 <div class="col-lg-10 col-lg-offset-1">
                 <div class="panel panel-default">
-                     <div class="panel-heading">Filtrar por: 
+                     <div class="panel-heading">
+                      <% if (filter) {%>
+                        Filtrado por:
+                        <%} else {%>
+                         Filtrar por: 
+                             <%}%>
+                    
                         <% for(var i=0; i<categorias.length; i++){%>
                             <a href="/precios/<%=categorias[i]%>"><%=categorias[i]%></a> | 
                          <%}%>
                           <% if (filter) {%>
                             <a href="/precios">Todos</a> 
+
                          <%}%>
                     </div>
                     <table class="table table-striped">
@@ -99,13 +106,7 @@
             <%}%> 
             </div> 
             <hr>
-            <footer id="footer-bottom">
-                <div class="row text-center">
-                    <div class="col-lg-12">
-                        <p>LS Limpieza - 124 Bis n°674, El Dique - (0221) 66587453 - LSLimpieza@gmail.com</p>
-                    </div>
-                </div>
-            </footer>
+            <%- include footer.ejs %>
         </div>
         
     </body>

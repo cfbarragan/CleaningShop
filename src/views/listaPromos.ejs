@@ -74,7 +74,12 @@
                         <div class="caption">
                             <div class='name'><%=ofertas[i].offerName%></div>
                             <div class='price'><%=ofertas[i].offerPrice%></div>
-                            <div class='trial'>Sin Vencimiento</div>
+                              <% if (ofertas[i].offerAvailability != null) {%>
+                               <div class='trial'><%=ofertas[i].offerAvailability%></div>
+                               <% } else { %>
+                                <div class='trial'>Solo por este mes</div>
+                               <%}%>
+                           
                             <hr>
                             <p><%=ofertas[i].offerDesc%></p>
                         </div>
@@ -84,13 +89,7 @@
             <%}%>   
             </div> 
             <hr>
-            <footer id="footer-bottom">
-                <div class="row text-center">
-                    <div class="col-lg-12">
-                        <p>LS Limpieza - 124 Bis n°674, El Dique - (0221) 66587453 - LSLimpieza@gmail.com</p>
-                    </div>
-                </div>
-            </footer>
+           <%- include footer.ejs %>
         </div>
         
     </body>

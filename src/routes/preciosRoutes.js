@@ -1,5 +1,5 @@
 var express = require('express');
-var preciossRouter = express.Router();
+var preciosRouter = express.Router();
 var mongodb = require('mongodb').MongoClient;
 var ObjectId = require('mongodb').ObjectID;
 
@@ -7,13 +7,13 @@ var router = function(nav,config) {
 
     var preciosController = require('../controllers/preciosController')(null, nav,config);
 
-    preciossRouter.route('/')
+    preciosRouter.route('/')
         .get(preciosController.getIndex);
 
-    preciossRouter.route('/:category')
+    preciosRouter.route('/:category')
        .get(preciosController.filterByCategory);
 
-    return preciossRouter;
+    return preciosRouter;
 };
 
 module.exports = router;

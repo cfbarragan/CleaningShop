@@ -61,7 +61,7 @@
         <h1>Bienvenidos a LS Limpieza!</h1>
         <p>Productos de limpieza sueltos. Desde la limpieza para el hogar hasta la limpieza para el auto. Consulta por los productos para cuidar tu pileta.
         </p>
-        <p>Consulta nuestra <a href="/precios">Lista de Precios </a> y aprovecha nuestras <a href="/ofertas">Promociones</a></p>
+        <p>Mira nuestra <a href="/precios">Lista de Precios </a> y aprovecha nuestras <a href="/ofertas">Promociones</a></p>
         <!--<p><a class="btn btn-primary btn-large">Call to action!</a>
         </p>-->
     </header>
@@ -81,7 +81,11 @@
                 <div class="caption">
                     <div class='name'><%=ofertas[i].offerName%></div>
                     <div class='price'><%=ofertas[i].offerPrice%></div>
-                    <div class='trial'>Solo esta semana</div>
+                     <% if (ofertas[i].offerAvailability != null) {%>
+                        <div class='trial'><%=ofertas[i].offerAvailability%></div>
+                        <% } else { %>
+                        <div class='trial'>Solo por este mes</div>
+                    <%}%>
                     <hr>
                     <p><%=ofertas[i].offerDesc%></p>
                 </div>
@@ -92,13 +96,14 @@
      <%}%> 
      <hr>
 
-    <footer id="footer-bottom">
+    <!--<footer id="footer-bottom">
         <div class="row text-center">
             <div class="col-lg-12">
                 <p>LS Limpieza - 124 Bis n°674, El Dique - (0221) 66587453 - LSLimpieza@gmail.com</p>
             </div>
         </div>
-    </footer>
+    </footer>-->
+    <%- include footer.ejs %>
 </div>
 </body>
 </html>

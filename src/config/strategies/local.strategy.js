@@ -19,8 +19,8 @@ module.exports = function(configs) {
                             return done(err);
                         }
                         if (results != null) {
-                           // var verify = passwordHash.verify(password, results.userpassword);
-                            var verify =  results.userpassword == password;
+                            var verify = passwordHash.verify(password, results.userpassword);
+                            //var verify =  results.userpassword == password;
                             if (verify) {
                                 var user = results;
                                 return done(null,user);
